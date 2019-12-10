@@ -1,3 +1,7 @@
 /.metadata/
 
 *.class
+
+NCU_MIS_SA/WEB-INF/classes/ncu/im3069/demo/util/DBMgr.java
+
+NCU_MIS_SA/WEB-INF/classes/ncu/im3069/demo/util/DBMgr.class
