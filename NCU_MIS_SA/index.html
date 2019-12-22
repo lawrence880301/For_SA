@@ -19,7 +19,7 @@
         <div id="content">
             <h2>會員清單</h2>
             <a href="register.html">新增會員</a>
-            <a href="product.html">購物車模組</a>
+            <a href="product.html">房間列表</a>
 
             <div id="flashMessage" class="message" style="display: none;"></div>
 
@@ -27,8 +27,11 @@
                 <thead>
                     <tr>
                         <th>編號</th>
-                        <th>姓名</th>
-                        <th>電郵</th>
+                        <th>姓氏</th>
+                        <th>名字</th>
+                        <th>電子信箱</th>
+                        <th>性別</th>
+                        <th>生日</th>
                         <th>更新時間</th>
                         <th>會員組別</th>
                         <th>功能</th>
@@ -76,14 +79,14 @@
                     // 發出POST的GET請求取得所有會員列表
                     $.ajax({
                             type: "GET",
-                            url: "api/member.do", //這一段加上去原網址
+                            url: "api/member.do",
                             crossDomain: true,
                             cache: false,
                             dataType: 'json',
-                            timeout: 5000, //超過就算了
+                            timeout: 5000,
                             success: function (response) {
                                 if(response.status == 200){
-                                    updateTable(response.response.data); //response 的物件屬性叫做response
+                                    updateTable(response.response.data);
                                     updateSQLTable(response.response);
                                 }
                                 console.log(response);
@@ -100,8 +103,11 @@
                     var table_html = '';
                     $.each(data, function(index, value) {
                         table_html += '<tr><td scope="row">' + value['id'] + '</td>';
-                        table_html += '<td>' + value['name'] + '</td>';
+                        table_html += '<td>' + value['firstname'] + '</td>';
+                        table_html += '<td>' + value['lastname'] + '</td>';
                         table_html += '<td>' + value['email'] + '</td>';
+                        table_html += '<td>' + value['gender'] + '</td>';
+                        table_html += '<td>' + value['dob'] + '</td>';
                         table_html += '<td>' + value['login_times'] + '</td>';
                         table_html += '<td>' + value['status'] + '</td>';
                         table_html += '<td>' + '<a href="edit.html?id=' + value['id'] + '">編輯</a> | ';

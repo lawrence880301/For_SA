@@ -19,29 +19,42 @@
         <div id="content">
             <h2>更新會員資料</h2>
             <a href="index.html">會員清單</a>
-            <a href="product.html">購物車模組</a>
+            <a href="product.html">房間列表</a>
 
             <div id="flashMessage" class="message" style="display: none;"></div>
 
             <form id="form" accept-charset="utf-8">
                 <div style="display:none;"><input type="hidden" name="_method" value="POST"></div>
                 <div class="input text required">
-                    <label for="member_name">姓名</label>
-                    <input name="name" maxlength="30" type="text" id="member_name" required="required">
+                    <label for="member_firstname">姓氏</label>
+                    <input name="name" maxlength="30" type="text" id="member_firstname" required="required">
+                </div>
+                <div class="input text required">
+                    <label for="member_lastname">名字</label>
+                    <input name="name" maxlength="30" type="text" id="member_lastname" required="required">
                 </div>
                 <div class="input email required">
-                    <label for="member_email">電郵</label>
+                    <label for="member_email">電子信箱</label>
                     <input name="email" maxlength="50" type="email" id="member_email" required="required" disabled>
                 </div>
                 <div class="input password required">
                     <label for="member_password">密碼</label>
                     <input name="password" type="password" id="member_password" required="required">
                 </div>
-                <div class="input text">
+                <div class="input gender required">
+                    <label for="member_gender">性別</label>
+					<input type="radio" name="gender" value="man">男<br>
+					<input type="radio" name="gender" value="woman">女<br>
+                </div>
+                <div class="input date required">
+                    <label for="member_dob">生日</label>
+                      <input type="date" name="dob">
+                </div>
+                <div class="input date required">
                     <label for="member_login_times">更新時間</label>
                     <input name="login_times" type="text" id="member_login_times" disabled>
                 </div>
-                <div class="input text">
+                <div class="input text required">
                     <label for="member_status">會員組別</label>
                     <input name="status" type="text" id="member_status" disabled>
                 </div>
@@ -56,9 +69,12 @@
                 var sql_num = 0;
 
                 function updateMember(id) {
-                    var name = $('#member_name').val();
+                	var firstname = $('#member_firstname').val();
+                    var lastname = $('#member_lastname').val();
                     var email = $('#member_email').val();
                     var password = $('#member_password').val();
+                    var gender = $('#member_gender').val();
+                    var dob = $('#member_dob').val();
 
                     var password_rule = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
 
@@ -69,9 +85,12 @@
                         // 將資料組成JSON格式
                         var data_object = {
                             "id": id,
-                            "name": name,
+                            "firstname":firstname,
+                            "lastname": lastname,
                             "email": email,
-                            "password": password
+                            "password": password,
+                            "gender":gender,
+                            "dob":dob
                         };
 
                         // 將JSON格式轉換成字串
@@ -132,9 +151,13 @@
                         success: function (response) {
                             if(response.status == 200){
                             	updateSQLTable(response.response);
-                            	document.getElementById('member_name').value = response['response']['data'][0]['name'];
+                            	document.getElementById('member_firstname').value = response['response']['data'][0]['firstname'];
+                            	document.getElementById('member_lastname').value = response['response']['data'][0]['lastname'];
                             	document.getElementById('member_email').value = response['response']['data'][0]['email'];
                             	document.getElementById('member_password').value = response['response']['data'][0]['password'];
+                            	document.getElementById('member_gender').value = response['response']['data'][0]['gender'];
+                            	document.getElementById('member_dob').value = response['response']['data'][0]['dob'];
+                            	
                             	document.getElementById('member_login_times').value = response['response']['data'][0]['login_times'];
                             	document.getElementById('member_status').value = response['response']['data'][0]['status'];
                             }

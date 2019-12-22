@@ -20,28 +20,48 @@
         <div id="content">
             <h2>註冊會員資料</h2>
             <a href="index.html">會員清單</a>
-            <a href="product.html">購物車模組</a>
+            <a href="product.html">房間列表</a>
             
             <div id="flashMessage" class="message" style="display: none;"></div>
 
             <form id="form" accept-charset="utf-8">
                 <div style="display:none;"><input type="hidden" name="_method" value="POST"></div>
                 <div class="input text required">
-                    <label for="member_name">姓名</label>
-                    <input name="name" maxlength="30" type="text" id="member_name" required="required">
+                    <label for="member_firstname">姓氏</label>
+                    <input name="firstname" maxlength="30" type="text" id="member_firstname" required="required">
+                </div>
+                <div class="input text required">
+                    <label for="member_lastname">名字</label>
+                    <input name="lastname" maxlength="30" type="text" id="member_lastname" required="required">
                 </div>
                 <div class="input email required">
-                    <label for="member_email">電郵</label>
+                    <label for="member_email">請輸入電子信箱</label>
                     <input name="email" maxlength="50" type="email" id="member_email" required="required">
                 </div>
                 <div class="input password required">
-                    <label for="member_password">密碼</label>
-                    <input name="password" maxlength="30" type="password" id="member_password" required="required">
+                    <label for="member_password">請輸入8~14位密碼(至少包含一個英文字母及一個數字)</label>
+                    <input name="password" maxlength="14" type="password" id="member_password" required="required">
+                </div>
+                <div class="input password required">
+                    <label for="member_confirmpassword">請再輸入一次密碼</label>
+                    <input name="confirmpassword" maxlength="14" type="password" id="member_confirmpassword" required="required">
+                </div>
+                <div class="input gender required" id="member_gender" onchange="print_value()">
+                    <label for="member_gender">性別</label>
+					<input type="radio" name="gender" value="man">男<br>
+					<input type="radio" name="gender" value="woman">女<br>
+                </div>
+                <div class="input dob required">
+                    <label for="member_dob">生日</label>
+                      <input type="date" name="dob">
                 </div>
                 <div class="submit"><input type="button" value="註冊" id="submit"></div>
             </form>
             
             <script type="text/javascript">
+	            function print_value(){
+	            	document.getElementById("gender").innerHTML=document.getElementById("member_gender").value
+	            }
                 $(document).ready(function() {
                     // 處理表單點擊事件
                     var $form = $('#submit');
@@ -50,9 +70,14 @@
                     });
 
                     function submit() {
-                        var name = $('#member_name').val();
+                        var firstname = $('#member_firstname').val();
+                        var lastname = $('#member_lastname').val();
                         var email = $('#member_email').val();
                         var password = $('#member_password').val();
+                        //var gender = $('#member_gender').val();
+                        var dob = $('#member_dob').val();
+
+
 
                         var email_rule = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/;
                         var password_rule = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
@@ -65,10 +90,17 @@
                         }
                         else {
                             // 將資料組成JSON格式
+                            
+                            var gender=documentgetElementById('member')
                             var data_object = {
-                                "name": name,
+                                "firstname": firstname,
+                                "lastname": lastname,
                                 "email": email,
-                                "password": password
+                                "password": password,
+                                "gender": gender,
+                                "dob": dob
+                           
+                            
                             };
 
                             // 將JSON格式轉換成字串
