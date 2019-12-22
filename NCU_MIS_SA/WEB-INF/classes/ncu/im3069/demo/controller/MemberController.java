@@ -1,6 +1,11 @@
 package ncu.im3069.demo.controller;
 
 import java.io.*;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.servlet.*;
 import javax.servlet.http.*;
 import org.json.*;
@@ -45,13 +50,28 @@ public class MemberController extends HttpServlet {
         /** 取出經解析到JSONObject之Request參數 */
         String email = jso.getString("email");
         String password = jso.getString("password");
-        String name = jso.getString("name");
+        String firstName = jso.getString("firstName");
+        String lastName = jso.getString("lastName");
+        String gender = jso.getString("gender");
+        
+        DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm");
+        Date Dob = null;
+		try {
+			Dob = (Date)formatter.parse(jso.getString("Dob"));
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
         
         /** 建立一個新的會員物件 */
-        Member m = new Member(email, password, name);
+        Member m = new Member(email, password, firstName, lastName, gender, Dob);
         
         /** 後端檢查是否有欄位為空值，若有則回傳錯誤訊息 */
-        if(email.isEmpty() || password.isEmpty() || name.isEmpty()) {
+        if(email.isEmpty() || password.isEmpty() || firstName.isEmpty() ||lastName.isEmpty()) {
             /** 以字串組出JSON格式之資料 */
             String resp = "{\"status\": \'400\', \"message\": \'欄位不能有空值\', \'response\': \'\'}";
             /** 透過JsonReader物件回傳到前端（以字串方式） */
@@ -172,10 +192,11 @@ public class MemberController extends HttpServlet {
         int id = jso.getInt("id");
         String email = jso.getString("email");
         String password = jso.getString("password");
-        String name = jso.getString("name");
+        String firstName = jso.getString("firstName");
+        String lastName = jso.getString("lastName");
 
-        /** 透過傳入之參數，新建一個以這些參數之會員Member物件 */
-        Member m = new Member(id, email, password, name);
+        /** 透過傳入之參數，新 建一個以這些參數之會員Member物件 */
+        Member m = new Member(id, email, password, firstName, lastName);
         
         /** 透過Member物件的update()方法至資料庫更新該名會員資料，回傳之資料為JSONObject物件 */
         JSONObject data = m.update();

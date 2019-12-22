@@ -23,7 +23,9 @@ public class JsonReader {
     /** string，用於儲存經讀取後之Request字串 */
     private String request_string;
 
-    /**
+
+
+	/**
      * 實例化（Instantiates）一個新的（new）JSONReader物件
      *
      * @param request Servlet Http Request物件，紀錄request

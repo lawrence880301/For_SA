@@ -2,6 +2,7 @@ package ncu.im3069.demo.app;
 
 import org.json.*;
 import java.util.Calendar;
+import java.util.Date;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -24,10 +25,16 @@ public class Member {
     private String email;
     
     /** name，會員姓名 */
-    private String name;
+    private String firstName;
+    
+    private String lastName;
     
     /** password，會員密碼 */
     private String password;
+    
+    private String gender;
+    
+    private Date Dob;
     
     /** login_times，更新時間的分鐘數 */
     private int login_times;
@@ -46,10 +53,13 @@ public class Member {
      * @param password 會員密碼
      * @param name 會員姓名
      */
-    public Member(String email, String password, String name) {
+    public Member(String email, String password, String firstName, String lastName, String gender, Date Dob) {
         this.email = email;
         this.password = password;
-        this.name = name;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.gender = gender;
+        this.Dob = Dob;
         update();
     }
 
@@ -62,11 +72,12 @@ public class Member {
      * @param password 會員密碼
      * @param name 會員姓名
      */
-    public Member(int id, String email, String password, String name) {
+    public Member(int id, String email, String password, String firstName, String lastName) {
         this.id = id;
         this.email = email;
         this.password = password;
-        this.name = name;
+        this.firstName = firstName;
+        this.lastName = lastName;
         /** 取回原有資料庫內該名會員之更新時間分鐘數與組別 */
         getLoginTimesStatus();
         /** 計算會員之組別 */
@@ -83,14 +94,18 @@ public class Member {
      * @param name 會員姓名
      * @param login_times 更新時間的分鐘數
      * @param status the 會員之組別
+     * @param lastName 
      */
-    public Member(int id, String email, String password, String name, int login_times, String status) {
+    public Member(int id, String email, String password, String firstName, String lastName, String gender, int login_times, String status, Date Dob) {
         this.id = id;
         this.email = email;
         this.password = password;
-        this.name = name;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.gender = gender;
         this.login_times = login_times;
         this.status = status;
+        this.Dob = Dob;
     }
     
     /**
@@ -116,10 +131,13 @@ public class Member {
      *
      * @return the name 回傳會員姓名
      */
-    public String getName() {
-        return this.name;
-    }
+	public String getFirstName() {
+		return firstName;
+	}
 
+	public String getLastName() {
+		return lastName;
+	}
     /**
      * 取得會員之密碼
      *
@@ -128,6 +146,10 @@ public class Member {
     public String getPassword() {
         return this.password;
     }
+    
+	public String getGender() {
+		return gender;
+	}
     
     /**
      * 取得更新資料時間之分鐘數
@@ -146,6 +168,10 @@ public class Member {
     public String getStatus() {
         return this.status;
     }
+    
+	public Date getDob() {
+		return Dob;
+	}
     
     /**
      * 更新會員資料
@@ -181,11 +207,14 @@ public class Member {
         /** 透過JSONObject將該名會員所需之資料全部進行封裝*/ 
         JSONObject jso = new JSONObject();
         jso.put("id", getID());
-        jso.put("name", getName());
+        jso.put("firstName", getFirstName());
+        jso.put("lastname", getLastName());
         jso.put("email", getEmail());
+        jso.put("gender", getGender());
         jso.put("password", getPassword());
         jso.put("login_times", getLoginTimes());
         jso.put("status", getStatus());
+        jso.put("Dob",getDob());
         
         return jso;
     }
@@ -214,4 +243,11 @@ public class Member {
         /** 檢查該名會員是否已經在資料庫，若有則透過MemberHelper物件，更新目前之組別狀態 */
         if(this.id != 0) mh.updateStatus(this, curr_status);
     }
+
+
+
+
+
+
+
 }
