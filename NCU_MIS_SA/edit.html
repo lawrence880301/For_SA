@@ -2,13 +2,67 @@
 <html>
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>CakePHP: the rapid development php framework: Members</title>
-    <link href="statics/icon/favicon.ico" type="image/x-icon" rel="icon">
-    <link href="statics/icon/favicon.ico" type="image/x-icon" rel="shortcut icon">
-    <link rel="stylesheet" type="text/css" href="statics/css/cake.generic.css">
+    <!-- Basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">   
+   
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">	
+ 
+     <!-- Site Metas -->
+    <title>Deluxe Interior - Responsive HTML5 OnePage Template</title>  
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-    <script src="statics/js/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+    <!-- Site Icons -->
+    <link rel="shortcut icon" href="statics/images/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="statics/images/apple-touch-icon.png">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="statics/css/bootstrap.min.css">
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="statics/css/style.css">
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="statics/css/responsive.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="statics/css/custom.css">
+	<script src="statics/js/modernizr.js"></script> <!-- Modernizr -->
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.statics/js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+      <div class="container-fluid">
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">
+			<img class="img-fluid" src="statics/images/logo.png" alt="" />
+		</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fa fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger active" href="tt.html">首頁</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="register.html">註冊/登入</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="rooms.html">房間列表</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="createroom.html">創建房間</a>
+            </li>
+			<li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="profile.html">個人資料</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
 </head>
 
 <body>
@@ -18,8 +72,8 @@
         </div>
         <div id="content">
             <h2>更新會員資料</h2>
-            <a href="index.html">會員清單</a>
-            <a href="product.html">房間列表</a>
+            <a href="member.html">會員清單</a>
+            <a href="rooms.html">房間列表</a>
 
             <div id="flashMessage" class="message" style="display: none;"></div>
 
@@ -47,8 +101,8 @@
 					<input type="radio" name="gender" value="woman">女<br>
                 </div>
                 <div class="input date required">
-                    <label for="member_dob">生日</label>
-                      <input type="date" name="dob">
+                    <label for="member_Dob">生日</label>
+                      <input type="date" name="Dob">
                 </div>
                 <div class="input date required">
                     <label for="member_login_times">更新時間</label>
@@ -74,7 +128,7 @@
                     var email = $('#member_email').val();
                     var password = $('#member_password').val();
                     var gender = $('#member_gender').val();
-                    var dob = $('#member_dob').val();
+                    var Dob = $('#member_Dob').val();
 
                     var password_rule = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
 
@@ -90,7 +144,7 @@
                             "email": email,
                             "password": password,
                             "gender":gender,
-                            "dob":dob
+                            "Dob":Dob
                         };
 
                         // 將JSON格式轉換成字串
@@ -156,7 +210,7 @@
                             	document.getElementById('member_email').value = response['response']['data'][0]['email'];
                             	document.getElementById('member_password').value = response['response']['data'][0]['password'];
                             	document.getElementById('member_gender').value = response['response']['data'][0]['gender'];
-                            	document.getElementById('member_dob').value = response['response']['data'][0]['dob'];
+                            	document.getElementById('member_Dob').value = response['response']['data'][0]['Dob'];
                             	
                             	document.getElementById('member_login_times').value = response['response']['data'][0]['login_times'];
                             	document.getElementById('member_status').value = response['response']['data'][0]['status'];

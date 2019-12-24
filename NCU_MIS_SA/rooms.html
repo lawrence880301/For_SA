@@ -2,49 +2,71 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-  <meta name="generator" content="Jekyll v3.8.5">
+<!-- Basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">   
+   
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">	
+ 
+     <!-- Site Metas -->
+    <title>Deluxe Interior - Responsive HTML5 OnePage Template</title>  
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-  <title>商品列表 ｜ NCU MIS SA</title>
+    <!-- Site Icons -->
+    <link rel="shortcut icon" href="statics/images/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="statics/images/apple-touch-icon.png">
 
-  <!-- Bootstrap core CSS -->
-  <link href="statics/css/bootstrap.min.css" rel="stylesheet">
-  <link href="statics/icon/favicon.ico" type="image/x-icon" rel="icon">
-  <link href="statics/icon/favicon.ico" type="image/x-icon" rel="shortcut icon">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="statics/css/bootstrap.min.css">
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="statics/css/style.css">
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="statics/css/responsive.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="statics/css/custom.css">
+	<script src="statics/js/modernizr.js"></script> <!-- Modernizr -->
 
-
-  <style>
-    .bd-placeholder-img {
-      font-size: 1.125rem;
-      text-anchor: middle;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-    }
-
-    @media (min-width: 768px) {
-      .bd-placeholder-img-lg {
-        font-size: 3.5rem;
-      }
-    }
-  </style>
-  <!-- Custom styles for this template -->
-  <link href="statics/css/product.css" rel="stylesheet">
-
-  <script src="statics/js/jquery-3.4.1.min.js"></script>
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.statics/js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
 
 <body>
   <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
     <h5 class="my-0 mr-md-auto font-weight-normal">NCU_MIS-SA</h5>
-    <nav class="my-2 my-md-0 mr-md-3">
-      <a class="p-2 text-dark" href="index.html">會員管理模組</a>
-      <a class="p-2 text-dark" href="product.html">房間列表</a>
-      <a class="p-2 text-dark" href="order.html">已加入房間列表</a>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+      <div class="container-fluid">
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">
+			<img class="img-fluid" src="statics/images/logo.png" alt="" />
+		</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fa fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger active" href="tt.html">首頁</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="register.html">註冊/登入</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="rooms.html">房間列表</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="createroom.html">創建房間</a>
+            </li>
+			<li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="profile.html">個人資料</a>
+            </li>
+          </ul>
+        </div>
+      </div>
     </nav>
   </div>
 
@@ -66,7 +88,7 @@
     function getAllProduct() {
       $.ajax({
         type: "GET",
-        url: "api/product.do",
+        url: "api/rooms.do",
         crossDomain: true,
         cache: false,
         dataType: 'json',

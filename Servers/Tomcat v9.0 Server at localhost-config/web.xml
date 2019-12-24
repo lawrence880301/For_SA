@@ -748,7 +748,7 @@
     </mime-mapping>
     <mime-mapping>
         <extension>air</extension>
-        <mime-type>application/vnd.adobe.air-application-installer-package+zip</mime-type>
+        <mime-type>application/vnd.aDobe.air-application-installer-package+zip</mime-type>
     </mime-mapping>
     <mime-mapping>
         <extension>ait</extension>
@@ -1592,7 +1592,7 @@
     </mime-mapping>
     <mime-mapping>
         <extension>fcdt</extension>
-        <mime-type>application/vnd.adobe.formscentral.fcdt</mime-type>
+        <mime-type>application/vnd.aDobe.formscentral.fcdt</mime-type>
     </mime-mapping>
     <mime-mapping>
         <extension>fcs</extension>
@@ -1708,11 +1708,11 @@
     </mime-mapping>
     <mime-mapping>
         <extension>fxp</extension>
-        <mime-type>application/vnd.adobe.fxp</mime-type>
+        <mime-type>application/vnd.aDobe.fxp</mime-type>
     </mime-mapping>
     <mime-mapping>
         <extension>fxpl</extension>
-        <mime-type>application/vnd.adobe.fxp</mime-type>
+        <mime-type>application/vnd.aDobe.fxp</mime-type>
     </mime-mapping>
     <mime-mapping>
         <extension>fzs</extension>
@@ -3211,7 +3211,7 @@
     </mime-mapping>
     <mime-mapping>
         <extension>psd</extension>
-        <mime-type>image/vnd.adobe.photoshop</mime-type>
+        <mime-type>image/vnd.aDobe.photoshop</mime-type>
     </mime-mapping>
     <mime-mapping>
         <extension>psf</extension>
@@ -4462,7 +4462,7 @@
     </mime-mapping>
     <mime-mapping>
         <extension>xdp</extension>
-        <mime-type>application/vnd.adobe.xdp+xml</mime-type>
+        <mime-type>application/vnd.aDobe.xdp+xml</mime-type>
     </mime-mapping>
     <mime-mapping>
         <extension>xdssc</extension>
@@ -4482,7 +4482,7 @@
     </mime-mapping>
     <mime-mapping>
         <extension>xfdf</extension>
-        <mime-type>application/vnd.adobe.xfdf</mime-type>
+        <mime-type>application/vnd.aDobe.xfdf</mime-type>
     </mime-mapping>
     <mime-mapping>
         <extension>xfdl</extension>
