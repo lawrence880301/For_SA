@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">	
  
      <!-- Site Metas -->
-    <title>Deluxe Interior - Responsive HTML5 OnePage Template</title>  
+    <title>Wundon Xican-桑幾勒</title>  
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -33,6 +33,53 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.statics/js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <style>
+		body {font-family: Arial, Helvetica, sans-serif;}
+
+		/* The Modal (background) */
+		.modal {
+		  display: none; /* Hidden by default */
+		  position: fixed; /* Stay in place */
+		  z-index: 1; /* Sit on top */
+		  padding-top: 100px; /* Location of the box */
+		  left: 0;
+		  top: 0;
+		  width: 100%; /* Full width */
+		  height: 100%; /* Full height */
+		  overflow: auto; /* Enable scroll if needed */
+		  background-color: rgb(0,0,0); /* Fallback color */
+		  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+		}
+
+		/* Modal Content */
+		.modal-content {
+		  background-color: #fefefe;
+		  margin: auto;
+		  padding: 20px;
+		  border: 1px solid #888;
+		  width: 80%;
+		}
+		
+		/* The Close Button */
+		.close {
+		  color: #aaaaaa;
+		  float: right;
+		  font-size: 28px;
+		  font-weight: bold;
+		}
+		
+		.close:hover,
+		.close:focus {
+		  color: #000;
+		  text-decoration: none;
+		  cursor: pointer;
+		}
+		.modal-backdrop { display: none; } 
+		.modal { background: rgba(0,0,0,0.5); 
+	</style>
 </head>
 
 <body>
@@ -71,9 +118,131 @@
   </div>
 
   <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-    <h1 class="display-4">房間列表</h1>
+    <h3 class="display-4">房間列表</h3>
     <p class="lead">以下是所有房間包含其ID、房間名稱、運動類型與其他說明</p>
   </div>
+	
+
+	<div class="gallery-list row"> 
+ 				<div class="col-md-4 col-sm-6 gallery-grid gal_a gal_b"> 
+ 					<div class="gallery-single fix"> 
+ 						<div class="desc"> 
+                            <h3><i class="fa fa-quote-left" ></i> Room 1</h3> 
+                            <p class="lead">房間名稱:耶耶<br>運動類型:籃球<br>人數限制:無</p> 
+                    	</div>
+ 						<div class="img-overlay" align=center > 
+ 							<h3>放房間名稱</h3> 
+<!--  							<a class="hoverbutton global-radius" data-toggle="modal" data-target="#exampleModalLong"><i class="fa fa-picture-o"></i></a>  -->
+							<div style=vertical-align:middle>
+								<button type="button" class="btn-light hvr-rectangle-out" data-toggle="modal" data-target="#exampleModalLong">詳細資料</button>
+							</div>
+						</div> 
+ 					</div> 
+ 				</div> 
+				
+ 				<div class="col-md-4 col-sm-6 gallery-grid gal_a gal_b"> 
+ 					<div class="gallery-single fix"> 
+ 						<img src="uploads/gallery_img-02.jpg" class="img-fluid" alt="Image"> 
+ 						<div class="img-overlay"> 
+ 							<h3>Office Interior</h3> 
+ 							<a href="uploads/gallery_img-02.jpg" data-rel="prettyPhoto[gal]" class="hoverbutton global-radius"><i class="fa fa-picture-o"></i></a> 
+ 						</div> 
+ 					</div> 
+ 				</div> 
+				
+ 				<div class="col-md-4 col-sm-6 gallery-grid gal_b gal_c"> 
+ 					<div class="gallery-single fix"> 
+ 						<img src="uploads/gallery_img-03.jpg" class="img-fluid" alt="Image"> 
+ 						<div class="img-overlay"> 
+ 							<h3>Indoor Interior</h3> 
+ 							<a href="uploads/gallery_img-03.jpg" data-rel="prettyPhoto[gal]" class="hoverbutton global-radius"><i class="fa fa-picture-o"></i></a> 
+ 						</div>
+ 					</div> 
+ 				</div> 
+				
+ 				<div class="col-md-4 col-sm-6 gallery-grid gal_b gal_a"> 
+ 					<div class="gallery-single fix"> 
+ 						<img src="uploads/gallery_img-04.jpg" class="img-fluid" alt="Image"> 
+ 					<div class="img-overlay"> 
+ 							<h3>Indoor Interior</h3> 
+ 							<a href="uploads/gallery_img-04.jpg" data-rel="prettyPhoto[gal]" class="hoverbutton global-radius"><i class="fa fa-picture-o"></i></a> 
+						</div> 
+ 					</div> 
+ 				</div> 
+				
+ 				<div class="col-md-4 col-sm-6 gallery-grid gal_c gal_d"> 
+ 					<div class="gallery-single fix"> 
+ 						<img src="uploads/gallery_img-05.jpg" class="img-fluid" alt="Image"> 
+ 						<div class="img-overlay"> 
+ 							<h3>Living Room </h3> 
+ 							<a href="uploads/gallery_img-05.jpg" data-rel="prettyPhoto[gal]" class="hoverbutton global-radius"><i class="fa fa-picture-o"></i></a> 
+ 						</div> 
+ 					</div> 
+ 				</div> 
+				
+ 				<div class="col-md-4 col-sm-6 gallery-grid gal_c gal_d"> 
+ 					<div class="gallery-single fix"> 
+ 						<img src="uploads/gallery_img-06.jpg" class="img-fluid" alt="Image"> 
+ 						<div class="img-overlay"> 
+ 							<h3>Living Room </h3> 
+ 							<a href="uploads/gallery_img-06.jpg" data-rel="prettyPhoto[gal]" class="hoverbutton global-radius"><i class="fa fa-picture-o"></i></a> 
+						</div> 
+					</div> 
+				</div> 
+				
+ 				<div class="col-md-4 col-sm-6 gallery-grid gal_c gal_b"> 
+ 					<div class="gallery-single fix">
+ 						<img src="uploads/gallery_img-07.jpg" class="img-fluid" alt="Image"> 
+ 						<div class="img-overlay"> 
+ 							<h3>Ecommercial Room </h3>
+ 							<a href="uploads/gallery_img-07.jpg" data-rel="prettyPhoto[gal]" class="hoverbutton global-radius"><i class="fa fa-picture-o"></i></a> 
+ 						</div> 
+ 					</div> 
+ 				</div> 
+				
+ 				<div class="col-md-4 col-sm-6 gallery-grid gal_d gal_c"> 
+ 					<div class="gallery-single fix"> 
+ 						<img src="uploads/gallery_img-08.jpg" class="img-fluid" alt="Image"> 
+ 						<div class="img-overlay"> 
+ 							<h3>Ecommercial Room </h3> 
+ 							<a href="uploads/gallery_img-08.jpg" data-rel="prettyPhoto[gal]" class="hoverbutton global-radius"><i class="fa fa-picture-o"></i></a> 
+ 						</div> 
+ 					</div> 
+ 				</div> 
+				
+ 				<div class="col-md-4 col-sm-6 gallery-grid gal_d gal_a"> 
+ 					<div class="gallery-single fix"> 
+ 						<img src="uploads/gallery_img-09.jpg" class="img-fluid" alt="Image"> 
+ 					<div class="img-overlay"> 
+ 							<h3>Ecommercial Room </h3> 
+ 							<a href="uploads/gallery_img-09.jpg" data-rel="prettyPhoto[gal]" class="hoverbutton global-radius"><i class="fa fa-picture-o"></i></a> 
+ 						</div> 
+ 					</div> 
+ 				</div> 
+				
+ 			</div> 
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
   <div class="album py-5 bg-light">
     <div class="container">
@@ -81,9 +250,18 @@
       </div>
     </div>
   </div>
+	<script>
 
-  <script>   
-    var [client_cart_obj, client_cart_amount]  = getCartDataFromClient();
+    $('.modal').on('shown.bs.modal', function() {
+        // prevent modal appear under background
+        $(this).appendTo("body");
+    })
+    
+	</script>
+  <script>  
+ 
+	
+  	var [client_cart_obj, client_cart_amount]  = getCartDataFromClient();
     
     function getAllProduct() {
       $.ajax({
@@ -107,7 +285,7 @@
           }
         },
         error: function () {
-          alert("無法連線到伺服器！");
+          <!--alert("無法連線到伺服器！");-->
         }
       });
     }
@@ -193,7 +371,8 @@
     	    $('#' + id).html('加入購物車');
     	}
     }
-  </script>
+    </script>
+
 
   <footer class="text-muted">
     <div class="container">

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<style>
+body {
+  padding-top: 100px;
+   font-family: monaco, monospace;
+   font-size: 150%;
+   font-weigth: 150%; 
+   background: url(http://218.16.125.44:81/img/20171020/131529739258878460.jpg);
+   background-size: cover;
+}
+#header{
+text-align: center;
+}
+#form{
+color: white;
+font-size: 100%;
+text-align: left;
+padding-left: 38%;
+} 
+#submit{
+color: white;
+font-size: 100%;
+text-align: center;
+padding-top: 3%; 
+} 
+#header{
+color: white;
+font-size: 100%;
+text-align: center;
+} 
+</style>
+<head>
+<meta charset="BIG5">
+</head>
+
+<body>
+<div id="container">
+ <div id="header">
+  <h1>來建立房間吧</h1><br>
+ </div>
+  
+ <div id="content">
+  <form id="form">
+   <div class="input sporttype">
+    <label for="sporttype">請選擇運動類型</label>
+    <select name="sporttype" id="sporttype" onchange="print_value1();">
+     <option value="jog">慢跑</option>
+     <option value="basketball">籃球</option>
+     <option value="volleyball">排球</option>
+     <option value="baseball">棒球</option>
+    </select>
+   </div>
+    
+   <div class="input roomname">
+    <label for="roomname">請輸入房間名稱</label>
+    <input type="text" name="roomname" id="roomname">
+   </div>
+   
+   <div class="input time">
+    <label for="act_date">請選擇活動時間</label>
+    <input type="date" name="date" id="act_date">
+   </div> 
+    
+   <div class="input location">
+    <label for="act_location">請輸入活動地點</label>
+    <input type="text" name="location" id="act_location">
+   </div> 
+    
+   <div class="input people">
+    <label for="act_people">請選擇活動人數</label>
+    <select name="people" id="act_people" onchange="print_value2();">
+     <option value="one">1</option>
+     <option value="two">2</option>
+     <option value="three">3</option>
+     <option value="four">4</option>
+     <option value="five">5</option>
+    </select>
+   </div>
+    
+   <div class="input gender">
+    <label for="act_gender">請選擇性別限制</label>
+    <select name="gender" id="act_gender" onchange="print_value3();">
+     <option value="boy">只限男性</option>
+     <option value="girl">只限女性</option>
+     <option value="nope">不限</option>
+    </select>
+   </div>
+    
+   <div class="input note">
+    <label for="note">備註(選填)</label>
+    <input type="text" name="note" id="note"><br>
+   </div>
+  </form>
+ </div>
+   <div id="submit">
+    <input type="button" value="返回" id="createroom_back">
+    <input type="button" value="建立房間" id="createroom_submit">
+   </div>
+   
+   <script type="text/javascript">
+   
+	   function print_value(){
+	   $(document).ready(function() {
+	       // 處理表單點擊事件
+	       var $form = $('#submit');
+	       $form.click(function() {
+	           submit();
+	       });
+// 將資料組成JSON格式
+   
+   var data_object = {
+       "sporttype": sporttype,
+       "roomname": roomname,
+       "location": location,
+       "people": people,
+       "gender": gender,
+       "note": note
+  
+   
+   };
+
+   // 將JSON格式轉換成字串
+   var data_string = JSON.stringify(data_object);
+
+   // 發出POST的AJAX請求
+   $.ajax({
+           type: "POST",
+           url: "api/createroom.do",
+           data: data_string,
+           crossDomain: true,
+           cache: false,
+           dataType: 'json',
+           timeout: 5000,
+           success: function (response) {
+               $('#flashMessage').html(response.message);
+               $('#flashMessage').show();
+               if(response.status == 200){
+                   updateSQLTable(response.response);
+               }
+           },
+           error: function () {
+               alert("無法連線到伺服器！");
+           }
+   });
+   
+   </script>
+   
+   
+</div>
+</body>
+</html>
