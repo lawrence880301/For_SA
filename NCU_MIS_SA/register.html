@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">	
  
      <!-- Site Metas -->
-    <title>Deluxe Interior - Responsive HTML5 OnePage Template</title>  
+    <title>Wundon Xican-桑幾勒</title>  
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -41,9 +41,13 @@
         
         <div id="content">
         	</br>
-            <h2>註冊會員資料</h2>
-            <a href="member.html">會員清單</a>
-            <a href="rooms.html">房間列表</a>
+            <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+			    <h3 class="display-4">會員註冊</h3>
+			    <p class="lead">請輸入個人資料以完成註冊</p>
+			    <a href="member.html">會員清單</a>
+            	<a href="rooms.html">房間列表</a>
+			</div>
+            
             
             <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
 	      <div class="container-fluid">
@@ -57,13 +61,13 @@
 	        <div class="collapse navbar-collapse" id="navbarResponsive">
 	          <ul class="navbar-nav ml-auto">
 	            <li class="nav-item">
-	              <a class="nav-link js-scroll-trigger active" href="tt.html">首頁</a>
+	              <a class="nav-link js-scroll-trigger active" href="index.html">首頁</a>
 	            </li>
 	            <li class="nav-item">
 	              <a class="nav-link js-scroll-trigger" href="register.html">註冊/登入</a>
 	            </li>
 	            <li class="nav-item">
-	              <a class="nav-link js-scroll-trigger" href="room.html">房間列表</a>
+	              <a class="nav-link js-scroll-trigger" href="rooms.html">房間列表</a>
 	            </li>
 	            <li class="nav-item">
 	              <a class="nav-link js-scroll-trigger" href="createroom.html">創建房間</a>
@@ -80,11 +84,63 @@
 
             <form id="form" accept-charset="utf-8">
                 <div style="display:none;"><input type="hidden" name="_method" value="POST"></div>
-                <div class="input text required">
-                    <label for="member_firstname">姓氏</label>
-                    <input name="firstname" maxlength="30" type="text" id="member_firstname" required="required">
-                </div>
-                <div class="input text required">
+			    <div class="row">
+	                <div class="col-md-12">
+	                    <div class="contact_form">
+	                        <div id="message"></div>
+				         		<form id="contactForm" name="sentMessage" novalidate="novalidate">    
+					             <div class="row">
+					             	<div class="col-md-6">						
+									<div class="form-group">   
+						                <div class="input text required">
+						                    <input class="form-control" id="member_firstname" type="text" placeholder="Your FirstName" required="required" data-validation-required-message="Please enter your firstname.">
+											<p class="help-block text-danger"></p>
+						                </div>
+					                </div>
+					                </div>
+					                <div class="col-md-6">
+									<div class="form-group">
+										<input class="form-control" id="member_lastname" type="text" placeholder="Your LastName" required="required" data-validation-required-message="Please enter your lastname.">
+										<p class="help-block text-danger"></p>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<input class="form-control" id="member_email" type="email" placeholder="Your Email" required="required" data-validation-required-message="Please enter your email address.">
+										<p class="help-block text-danger"></p>
+									</div>
+								</div>
+								<div class="col-md-20">
+									<div class="form-group">
+										<input class="form-control" id="member_password" type="password" placeholder="Your Password" required="required" data-validation-required-message="Please enter your phone number.">
+										<p class="help-block text-danger"></p>
+									</div>
+								</div>
+								<div class="col-md-20">
+									<div class="form-group">
+										<input class="form-control" id="member_confirmpassword" type="password" placeholder="Confirm Your Password" required="required" data-validation-required-message="Please enter your phone number.">
+										<p class="help-block text-danger"></p>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="member_gender" required="required" data-validation-required-message="Please enter a message.">性別</label><br>
+										<input type="radio" name="gender" class="form-control" id="member_gender" value="man">男<br>
+										<input type="radio" name="gender" class="form-control" id="member_gender" value="woman">女<br>
+										<p class="help-block text-danger"></p>
+									</div>
+								</div>
+								<div class="clearfix"></div>
+								<div class="col-lg-12 text-center">
+									<div id="success"></div>
+									<button id="submit" class="sim-btn hvr-rectangle-out" data-text="Send Message" type="submit">Send Message</button>
+								</div>
+					           </form>
+				         </div>
+				    </div>
+			    </div>
+                <!--
+                  <div class="input text required">
                     <label for="member_lastname">名字</label>
                     <input name="lastname" maxlength="30" type="text" id="member_lastname" required="required">
                 </div>
@@ -109,17 +165,20 @@
                     <label for="member_Dob">生日</label>
                       <input type="date" name="Dob">
                 </div>
-                <div class="submit"><input type="button" value="註冊" id="submit"></div>
-            </form>
+                </form>
+                  -->
+                
+                
             
             
-            <div class="container-fluid">
+            <!-- 
+            	<div class="container-fluid">
             <div class="section-title text-center">
                 <h3>Contact</h3>
                 <p>Quisque eget nisl id nulla sagittis auctor quis id. Aliquam quis vehicula enim, non aliquam risus.</p>
-            </div><!-- end title -->
-
-            <div class="row">
+            </div>
+			
+				<div class="row">
                 <div class="col-md-12">
                     <div class="contact_form">
                         <div id="message"></div>
@@ -164,9 +223,15 @@
 						</form>
                     </div>
                 </div><!-- end col -->
+                
             </div><!-- end row -->
         </div><!-- end container -->
     </div>
+            -->
+            
+  
+			
+            
             
             
             <script type="text/javascript">
