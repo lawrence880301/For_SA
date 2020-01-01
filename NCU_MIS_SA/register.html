@@ -29,38 +29,160 @@
     <link rel="stylesheet" href="statics/css/responsive.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="statics/css/custom.css">
+    
+    <link rel="stylesheet" href="statics/css/login.css">
 	<script src="statics/js/modernizr.js"></script>
 	
 	<script src="statics/js/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
 
 <body>
 
-	<div class="hero">
-		<div class="form-box">
-			<div class="button-box">
-				<button type="button" class="toggle-btn">Log in</button>
-				<button type="button" class="toggle-btn">Register</button>
+	<div class="login-hero" align="center">
+		<div class="login-form-box" >
+			<div class="login-button-box" >
+				<div id="login-btn"></div>
+				<button type="button" class="login-toggle-btn" onclick="login()">Log in</button>
+				<button type="button" class="login-toggle-btn" onclick="register()">Register</button>
 			</div>
-		</div>
-		<div class="social-icons">
-			<img src="fb.png">
-			<img src="fb.png">
-			<img src="fb.png">
+			<div class="row">
+				<div class="col-md-12">
+					<form id="login" class="input-group">
+						<div class="row">
+							<div class="col-md-2"></div>
+			                <div class="col-md-8">
+			                	<div align="center" class="contact_form" >
+			                        <div id="message"></div>
+						         	<form id="contactForm" name="sentMessage" novalidate="novalidate">    
+							             <div class="row">
+											<div class="col-md-12">
+												<div class="form-group">
+													<input class="form-control" id="member_email" type="email" placeholder="Your Email" required="required" data-validation-required-message="Please enter your email address.">
+													<p class="help-block text-danger"></p>
+												</div>
+											</div>
+											<div class="col-md-12">
+												<div class="form-group">
+													<input class="form-control" id="member_password" type="password" placeholder="Your Password" required="required" data-validation-required-message="Please enter your phone number.">
+													<p class="help-block text-danger"></p>
+												</div>
+											</div>
+											<div class="clearfix"></div>
+											<div class="col-lg-12 text-center">
+												<div id="success"></div>
+												<button id="submit" class="sim-btn hvr-rectangle-out" data-text="Register" type="submit">Login</button>
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="col-md-12">
+					<form id="register" class="input-group" style="display: none;">
+					<div class="row">
+<!-- 						<div class="col-md-2"></div> -->
+		                <div class="">
+		                    <div align="center" class="contact_form" >
+		                        <div id="message"></div>
+					         		<form id="contactForm" name="sentMessage" novalidate="novalidate">    
+						             <div class="row">
+						             	<div class="col-md-12">						
+										<div class="form-group">   
+							                <div class="input text required">
+							                    <input class="form-control" id="member_firstname" type="text" placeholder="Your FirstName" required="required" data-validation-required-message="Please enter your firstname.">
+												<p class="help-block text-danger"></p>
+							                </div>
+						                </div>
+						                </div>
+						                <div class="col-md-12">
+										<div class="form-group">
+											<input class="form-control" id="member_lastname" type="text" placeholder="Your LastName" required="required" data-validation-required-message="Please enter your lastname.">
+											<p class="help-block text-danger"></p>
+										</div>
+									</div>
+									<div class="col-md-12">
+										<div class="form-group">
+											<input class="form-control" id="member_email" type="email" placeholder="Your Email" required="required" data-validation-required-message="Please enter your email address.">
+											<p class="help-block text-danger"></p>
+										</div>
+									</div>
+									<div class="col-md-12">
+										<div class="form-group">
+											<input class="form-control" id="member_password" type="password" placeholder="Your Password" required="required" data-validation-required-message="Please enter your phone number.">
+											<p class="help-block text-danger"></p>
+										</div>
+									</div>
+									<div class="col-md-12">
+										<div class="form-group">
+											<input class="form-control" id="member_confirmpassword" type="password" placeholder="Confirm Your Password" required="required" data-validation-required-message="Please enter your phone number.">
+											<p class="help-block text-danger"></p>
+										</div>
+									</div>
+									<div class="col-md-4">
+										<div class="form-group" style="font-size:20px;color:#0b001f;">
+											<label for="member_gender" required="required" data-validation-required-message="Please enter a message."></label><br>
+											<label class="radio-inline">
+											    <input type="radio" name="member_gender" checked>MAN    
+											</label>
+											<label class="radio-inline">
+											    <input type="radio" name="member_gender">WOMAN
+											</label>
+											<p class="help-block text-danger"></p>
+										</div>
+									</div>
+									<div class="col-md-12">
+										<div class="form-group">
+											<input type="date" name="member_Dob">
+										</div>
+									</div>
+									
+									<div class="clearfix"></div>
+									<div class="col-lg-12 text-center">
+										<div id="success"></div>
+										<button id="submit" class="sim-btn hvr-rectangle-out" data-text="Register" type="submit">Register</button>
+									</div>
+									</div>
+						     	</form>
+					         </div>
+					    </div>
+					 </div>
+				</form>
+			</div>
 		</div>
 	</div>
 
-
-
-
-
-
-
-
+	<script>
+	
+	var x=document.getElementById("login");
+	var y=document.getElementById("register");
+	var z=document.getElementById("login-btn");
+	
+	function register(){
+		$(y).show();
+		$(x).hide();
+// 		x.style.left="-500px";
+// 		y.style.left="10px";
+		z.style.left="110px"
+	}
+	function login(){
+		$(x).show();
+		$(y).hide();
+// 		x.style.left="50px";
+// 		y.style.left="500px";
+		z.style.left="0px"
+	}
+	
+	
+	
+	
+	
+	</script>
 
     <div id="container">
-        <div id="header">
-            <h1><a href="http://cakephp.org/">CakePHP: the rapid development php framework</a></h1>
-        </div>
+<!--         <div id="header"> -->
+<!--             <h1><a href="http://cakephp.org/">CakePHP: the rapid development php framework</a></h1> -->
+<!--         </div> -->
         
         <div id="content">
         	</br>
@@ -253,8 +375,8 @@
                 
             </div><!-- end row -->
         </div><!-- end container -->
-    </div>
-            -->
+    
+          
             
   
 			
@@ -352,27 +474,27 @@
 
         </div>
         
-        <div id="footer">
-            <a href="http://www.cakephp.org/" target="_blank" id="cake-powered"><img src="statics/img/cake.power.gif" alt="CakePHP: the rapid development php framework" border="0"></a>
-            <p>CakePHP 2.6.10</p>
-        </div>
+<!--         <div id="footer"> -->
+<!--             <a href="http://www.cakephp.org/" target="_blank" id="cake-powered"><img src="statics/img/cake.power.gif" alt="CakePHP: the rapid development php framework" border="0"></a> -->
+<!--             <p>CakePHP 2.6.10</p> -->
+<!--         </div> -->
     </div>
 
-    <table class="cake-sql-log" id="sql_log" summary="Cake SQL Log" cellspacing="0">
-        <caption id="sql_summary">(default) 0 queries took 0 ms</caption>
-        <thead>
-            <tr>
-                <th>Nr</th>
-                <th>Query</th>
-                <th>Error</th>
-                <th>Affected</th>
-                <th>Num. rows</th>
-                <th>Took (ms)</th>
-            </tr>
-        </thead>
-        <tbody>
-        </tbody>
-    </table>
+<!--     <table class="cake-sql-log" id="sql_log" summary="Cake SQL Log" cellspacing="0"> -->
+<!--         <caption id="sql_summary">(default) 0 queries took 0 ms</caption> -->
+<!--         <thead> -->
+<!--             <tr> -->
+<!--                 <th>Nr</th> -->
+<!--                 <th>Query</th> -->
+<!--                 <th>Error</th> -->
+<!--                 <th>Affected</th> -->
+<!--                 <th>Num. rows</th> -->
+<!--                 <th>Took (ms)</th> -->
+<!--             </tr> -->
+<!--         </thead> -->
+<!--         <tbody> -->
+<!--         </tbody> -->
+<!--     </table> -->
 
 </body>
 
