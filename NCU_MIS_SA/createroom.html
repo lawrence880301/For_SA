@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="BIG5">
-<meta charset="BIG5">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://kit.fontawesome.com/c294d8ecbc.js"></script>
     <!-- Basic -->
@@ -48,19 +46,19 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger active" href="index.html">����</a>
+              <a class="nav-link js-scroll-trigger active" href="index.html">首頁</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="register.html">���U/�n�J</a>
+              <a class="nav-link js-scroll-trigger" href="register.html">註冊/登入</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="rooms.html">�ж��C��</a>
+              <a class="nav-link js-scroll-trigger" href="rooms.html">房間列表</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="createroom.html">�Ыةж�</a>
+              <a class="nav-link js-scroll-trigger" href="createroom.html">創建房間</a>
             </li>
 			<li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="profile.html">�ӤH���</a>
+              <a class="nav-link js-scroll-trigger" href="profile.html">個人資料</a>
             </li>
           </ul>
         </div>
@@ -73,8 +71,8 @@
     <div id="createroom" class="section db">
         <div class="container-fluid">
             <div class="section-title text-center">
-                <h3>�Хߩж�</h3>
-                <p>�@��إߧA�Q�n���ж�</p>
+                <h3>創立房間</h3>
+                <p>一鍵建立你想要的房間</p>
             </div><!-- end title -->
 
             <div class="row">
@@ -86,21 +84,21 @@
 								<div class="col-md-6">
 									<div class="form-group">
 										<i class="fas fa-home"></i>
-										<label for="roomname">�ж��W��</label>
-										<input class="form-control" id="roomname" type="text" placeholder="�п�J�ж��W��"  required="required" data-validation-required-message="�п�J�ж��W��.">
+										<label for="roomname">房間名稱</label>
+										<input class="form-control" id="roomname" type="text" placeholder="請輸入房間名稱"  required="required" data-validation-required-message="請輸入房間名稱.">
 										<p class="help-block text-danger"></p>
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
 										<i class="fas fa-basketball-ball"></i>
-										<label for="sporttypeselect">�B�����O</label>	
+										<label for="sporttypeselect">運動類別</label>	
 										<form>
-											<select name="sporttypeselect" placeholder="�п�ܹB�����O"  required="required" data-validation-required-message="�п�ܹB�����O.">
-											�@<option value="jog">�C�]</option>
-											�@<option value="basketball">�x�y</option>
-											�@<option value="baseball">�βy</option>
-											�@<option value="soccer">���y</option>
+											<select name="sporttypeselect" placeholder="請選擇運動類別"  required="required" data-validation-required-message="請選擇運動類別.">
+											　<option value="jog">慢跑</option>
+											　<option value="basketball">籃球</option>
+											　<option value="baseball">棒球</option>
+											　<option value="soccer">足球</option>
 											</select>
 										</form>
 									</div>
@@ -108,29 +106,29 @@
 								<div class="col-md-6">
 									<div class="form-group">
 										<i class="fas fa-calendar-alt"></i>
-										<label for="time">���ʮɶ�</label>
-										<input class="form-control" id="time" type="date" placeholder="�п�ܬ��ʮɶ�" required="required" data-validation-required-message="�п�ܬ��ʮɶ�" >
+										<label for="time">活動時間</label>
+										<input class="form-control" id="time" type="date" placeholder="請選擇活動時間" required="required" data-validation-required-message="請選擇活動時間" >
 										<p class="help-block text-danger"></p>
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
 										<i class="fas fa-map-marker-alt"></i>
-										<label for="location">���ʦa�I</label>
-										<input class="form-control" id="location" type="text" placeholder="�п�J���ʦa�I" required="required" data-validation-required-message="�п�J���ʦa�I"  >
+										<label for="location">活動地點</label>
+										<input class="form-control" id="location" type="text" placeholder="請輸入活動地點" required="required" data-validation-required-message="請輸入活動地點"  >
 										<p class="help-block text-danger"></p>
 									</div>
 								</div>
 								<div class="col-md-4">
 									<div class="form-group">
 										<i class="fas fa-user-friends"></i>
-										<label for="peopleselect">���ʻݨD�H��</label>
+										<label for="peopleselect">活動需求人數</label>
 											<form>
-												<select name="peopleselect" placeholder="�п�ܬ��ʳ̤j�i�e�ǤH��""  required="required" data-validation-required-message="�п�ܬ��ʤH��.">
-											�@	<option value="one">1</option>
-											�@	<option value="two">2</option>
-											�@	<option value="three">3</option>
-											�@	<option value="four">4</option>
+												<select name="peopleselect" placeholder="請選擇活動最大可容納人數""  required="required" data-validation-required-message="請選擇活動人數.">
+											　	<option value="one">1</option>
+											　	<option value="two">2</option>
+											　	<option value="three">3</option>
+											　	<option value="four">4</option>
 												</select>
 											</form>
 										<p class="help-block text-danger"></p>
@@ -139,13 +137,13 @@
 								<div class="col-md-4">
 									<div class="form-group">
 										<i class="fas fa-user-slash"></i>
-										<label for="genderselect">���ʩʧO����</label>
+										<label for="genderselect">活動性別限制</label>
 											<form>
-												<select name="genderselect" placeholder="�п�ܬ��ʩʧO����""  required="required" data-validation-required-message="�п�ܬ��ʩʧO����.">
-											�@	<option value="boy">�u���k��</option>
-											�@	<option value="girl">�u���k��</option>
-											�@	<option value="norestriction">�ʧO����</option>
-											�@	
+												<select name="genderselect" placeholder="請選擇活動性別限制""  required="required" data-validation-required-message="請選擇活動性別限制.">
+											　	<option value="boy">只限男性</option>
+											　	<option value="girl">只限女性</option>
+											　	<option value="norestriction">性別不限</option>
+											　	
 												</select>
 											</form>
 										<p class="help-block text-danger"></p>
@@ -154,26 +152,26 @@
 								<div class="col-md-4">
 									<div class="form-group">
 										<i class="	fas fa-user-check"></i>
-										<label for="ageselect">���ʦ~�֭���</label>
+										<label for="ageselect">活動年齡限制</label>
 											<ul class=cell1>
 												<form>
-													<select name="ageselect" placeholder="�п�ܬ��ʦ~�֭���"  required="required" data-validation-required-message="�п�ܬ��ʦ~�֤U��">
-												�@		<option value="one">1��</option>
-												�@		<option value="two">2��</option>
-												�@		<option value="three">3��</option>
-												�@		<option value="four">4��	</option>
-														<option value="nope">����	</option>
+													<select name="ageselect" placeholder="請選擇活動年齡限制"  required="required" data-validation-required-message="請選擇活動年齡下限">
+												　		<option value="one">1歲</option>
+												　		<option value="two">2歲</option>
+												　		<option value="three">3歲</option>
+												　		<option value="four">4歲	</option>
+														<option value="nope">不限	</option>
 													</select>
 												</form>
 											</ul>
-											<ul class=cell2>��</ul>
+											<ul class=cell2>至</ul>
 											<ul class=cell3>
 												<form>
-													<select name="ageselect" placeholder="�п�ܬ��ʦ~�֭���"  required="required" data-validation-required-message="�п�ܬ��ʦ~�֤W��.">
-											�@			<option value="one">1��</option>
-											�@			<option value="two">2��</option>
-											�@			<option value="three">3��</option>
-											�@			<option value="nope">����	</option>
+													<select name="ageselect" placeholder="請選擇活動年齡限制"  required="required" data-validation-required-message="請選擇活動年齡上限.">
+											　			<option value="one">1歲</option>
+											　			<option value="two">2歲</option>
+											　			<option value="three">3歲</option>
+											　			<option value="nope">不限	</option>
 													</select>
 												</form>
 											</ul>
@@ -183,8 +181,8 @@
 									
 									
 								<div class="col-lg-12">
-									<button id="backButton" class="sim-btn hvr-rectangle-out" data-text="Send Message" type="submit">��^</button>
-									<button id="createroomButton" class="sim-btn hvr-rectangle-out" data-text="Send Message" type="submit">�إߩж�</button>
+									<button id="backButton" class="sim-btn hvr-rectangle-out" data-text="Send Message" type="submit">返回</button>
+									<button id="createroomButton" class="sim-btn hvr-rectangle-out" data-text="Send Message" type="submit">建立房間</button>
 								</div>
 							</div>
 						</form>
