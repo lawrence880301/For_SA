@@ -36,13 +36,17 @@
 	<script src="statics/js/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
 
 <body>
-
-	<div class="login-hero" align="center">
+<!-- 	<div id="preloader"> -->
+<!--         <div id="main-ld"> -->
+<!-- 			<div id="loader"></div>   -->
+<!-- 		</div> -->
+<!--     </div> -->
+<!-- 	<div class="login-hero" align="center"> -->
 		<div class="login-form-box" >
 			<div class="login-button-box" >
 				<div id="login-btn"></div>
-				<button type="button" class="login-toggle-btn" onclick="login()">Log in</button>
-				<button type="button" class="login-toggle-btn" onclick="register()">Register</button>
+				<button type="button" class="login-toggle-btn" style="color:silver;" onclick="login()">登入</button>
+				<button type="button" class="login-toggle-btn" style="color:silver;" onclick="register()">註冊</button>
 			</div>
 			<div class="row">
 				<div class="col-md-12">
@@ -56,20 +60,20 @@
 							             <div class="row">
 											<div class="col-md-12">
 												<div class="form-group">
-													<input class="form-control" id="member_email" type="email" placeholder="Your Email" required="required" data-validation-required-message="Please enter your email address.">
+													<input class="form-control" id="member_email" type="email" placeholder="請輸入電子信箱" required="required" data-validation-required-message="Please enter your email address.">
 													<p class="help-block text-danger"></p>
 												</div>
 											</div>
 											<div class="col-md-12">
 												<div class="form-group">
-													<input class="form-control" id="member_password" type="password" placeholder="Your Password" required="required" data-validation-required-message="Please enter your phone number.">
+													<input class="form-control" id="member_password" type="password" placeholder="請輸入密碼" required="required" data-validation-required-message="Please enter your phone number.">
 													<p class="help-block text-danger"></p>
 												</div>
 											</div>
 											<div class="clearfix"></div>
 											<div class="col-lg-12 text-center">
 												<div id="success"></div>
-												<button id="submit" class="sim-btn hvr-rectangle-out" data-text="Register" type="submit">Login</button>
+												<button id="submit" class="sim-btn hvr-rectangle-out" data-text="Register" type="submit">登入</button>
 											</div>
 										</div>
 									</form>
@@ -90,49 +94,53 @@
 						             	<div class="col-md-12">						
 										<div class="form-group">   
 							                <div class="input text required">
-							                    <input class="form-control" id="member_firstname" type="text" placeholder="Your FirstName" required="required" data-validation-required-message="Please enter your firstname.">
+							                    <input class="form-control" id="member_firstname" type="text" placeholder="請輸入名字" required="required" data-validation-required-message="Please enter your firstname.">
 												<p class="help-block text-danger"></p>
 							                </div>
 						                </div>
 						                </div>
 						                <div class="col-md-12">
 										<div class="form-group">
-											<input class="form-control" id="member_lastname" type="text" placeholder="Your LastName" required="required" data-validation-required-message="Please enter your lastname.">
+											<input class="form-control" id="member_lastname" type="text" placeholder="請輸入姓氏" required="required" data-validation-required-message="Please enter your lastname.">
 											<p class="help-block text-danger"></p>
 										</div>
 									</div>
 									<div class="col-md-12">
 										<div class="form-group">
-											<input class="form-control" id="member_email" type="email" placeholder="Your Email" required="required" data-validation-required-message="Please enter your email address.">
+											<input class="form-control" id="member_email" type="email" placeholder="請輸入電子信箱" required="required" data-validation-required-message="Please enter your email address.">
 											<p class="help-block text-danger"></p>
 										</div>
 									</div>
 									<div class="col-md-12">
 										<div class="form-group">
-											<input class="form-control" id="member_password" type="password" placeholder="Your Password" required="required" data-validation-required-message="Please enter your phone number.">
+											<input class="form-control" id="member_password" type="password" placeholder="請輸入密碼" required="required" data-validation-required-message="Please enter your phone number.">
 											<p class="help-block text-danger"></p>
 										</div>
 									</div>
 									<div class="col-md-12">
 										<div class="form-group">
-											<input class="form-control" id="member_confirmpassword" type="password" placeholder="Confirm Your Password" required="required" data-validation-required-message="Please enter your phone number.">
+											<input class="form-control" id="member_confirmpassword" type="password" placeholder="請再輸入一次密碼" required="required" data-validation-required-message="Please enter your phone number.">
 											<p class="help-block text-danger"></p>
 										</div>
 									</div>
-									<div class="col-md-4">
-										<div class="form-group" style="font-size:20px;color:#0b001f;">
-											<label for="member_gender" required="required" data-validation-required-message="Please enter a message."></label><br>
-											<label class="radio-inline">
-											    <input type="radio" name="member_gender" checked>MAN    
-											</label>
-											<label class="radio-inline">
-											    <input type="radio" name="member_gender">WOMAN
-											</label>
-											<p class="help-block text-danger"></p>
+									
+										<div class="col-md-4">
+											<div class="form-group" style="font-size:20px;color:#0b001f;">
+												<label for="member_gender" required="required" data-validation-required-message="Please enter a message."></label><br>
+												<label class="radio-inline">
+												    <input type="radio" name="member_gender" checked>男生   
+												</label>
+												<label class="radio-inline">
+												    <input type="radio" name="member_gender">女生
+												</label>
+												<p class="help-block text-danger"></p>
+											</div>
 										</div>
-									</div>
+									
+									
 									<div class="col-md-12">
 										<div class="form-group">
+										<h3 style="text-align:left;"> 出生日期</h3>
 											<input type="date" name="member_Dob">
 										</div>
 									</div>
@@ -150,7 +158,7 @@
 				</form>
 			</div>
 		</div>
-	</div>
+<!-- 	</div> -->
 
 	<script>
 	
@@ -163,7 +171,7 @@
 		$(x).hide();
 // 		x.style.left="-500px";
 // 		y.style.left="10px";
-		z.style.left="110px"
+		z.style.left="80px"
 	}
 	function login(){
 		$(x).show();
@@ -206,10 +214,10 @@
 	        <div class="collapse navbar-collapse" id="navbarResponsive">
 	          <ul class="navbar-nav ml-auto">
 	            <li class="nav-item">
-	              <a class="nav-link js-scroll-trigger active" href="index.html">首頁</a>
+	              <a class="nav-link js-scroll-trigger" href="index.html">首頁</a>
 	            </li>
 	            <li class="nav-item">
-	              <a class="nav-link js-scroll-trigger" href="register.html">註冊/登入</a>
+	              <a class="nav-link js-scroll-trigger active" href="register.html">註冊/登入</a>
 	            </li>
 	            <li class="nav-item">
 	              <a class="nav-link js-scroll-trigger" href="rooms.html">房間列表</a>
