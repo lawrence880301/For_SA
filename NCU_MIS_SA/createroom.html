@@ -1,152 +1,199 @@
 <!DOCTYPE html>
 <html>
-<style>
-body {
-  padding-top: 100px;
-   font-family: monaco, monospace;
-   font-size: 150%;
-   font-weigth: 150%; 
-   background: url(http://218.16.125.44:81/img/20171020/131529739258878460.jpg);
-   background-size: cover;
-}
-#header{
-text-align: center;
-}
-#form{
-color: white;
-font-size: 100%;
-text-align: left;
-padding-left: 38%;
-} 
-#submit{
-color: white;
-font-size: 100%;
-text-align: center;
-padding-top: 3%; 
-} 
-#header{
-color: white;
-font-size: 100%;
-text-align: center;
-} 
-</style>
 <head>
 <meta charset="BIG5">
+<meta charset="BIG5">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://kit.fontawesome.com/c294d8ecbc.js"></script>
+    <!-- Basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">   
+   
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">	
+ 
+     <!-- Site Metas -->
+    <title>Deluxe Interior - Responsive HTML5 OnePage Template</title>  
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Site Icons -->
+    <link rel="shortcut icon" href="statics/images/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="statics/images/apple-touch-icon.png">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="statics/css/bootstrap.min.css">
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="statics/css/style.css">
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="statics/css/responsive.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="statics/css/custom.css">
+	<script src="statics/js/modernizr.js"></script> <!-- Modernizr -->
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.statics/js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+      <div class="container-fluid">
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">
+			<img class="img-fluid" src="statics/images/logo.png" alt="" />
+		</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fa fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger active" href="index.html">嚙踝蕭嚙踝蕭</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="register.html">嚙踝蕭嚙磊/嚙緯嚙皚</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="rooms.html">嚙請塚蕭嚙瘠嚙踝蕭</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="createroom.html">嚙請建房塚蕭</a>
+            </li>
+			<li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="profile.html">嚙諉人嚙踝蕭嚙�</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+<title>Insert title here</title>
 </head>
-
 <body>
-<div id="container">
- <div id="header">
-  <h1>來建立房間吧</h1><br>
- </div>
-  
- <div id="content">
-  <form id="form">
-   <div class="input sporttype">
-    <label for="sporttype">請選擇運動類型</label>
-    <select name="sporttype" id="sporttype" onchange="print_value1();">
-     <option value="jog">慢跑</option>
-     <option value="basketball">籃球</option>
-     <option value="volleyball">排球</option>
-     <option value="baseball">棒球</option>
-    </select>
-   </div>
-    
-   <div class="input roomname">
-    <label for="roomname">請輸入房間名稱</label>
-    <input type="text" name="roomname" id="roomname">
-   </div>
-   
-   <div class="input time">
-    <label for="act_date">請選擇活動時間</label>
-    <input type="date" name="date" id="act_date">
-   </div> 
-    
-   <div class="input location">
-    <label for="act_location">請輸入活動地點</label>
-    <input type="text" name="location" id="act_location">
-   </div> 
-    
-   <div class="input people">
-    <label for="act_people">請選擇活動人數</label>
-    <select name="people" id="act_people" onchange="print_value2();">
-     <option value="one">1</option>
-     <option value="two">2</option>
-     <option value="three">3</option>
-     <option value="four">4</option>
-     <option value="five">5</option>
-    </select>
-   </div>
-    
-   <div class="input gender">
-    <label for="act_gender">請選擇性別限制</label>
-    <select name="gender" id="act_gender" onchange="print_value3();">
-     <option value="boy">只限男性</option>
-     <option value="girl">只限女性</option>
-     <option value="nope">不限</option>
-    </select>
-   </div>
-    
-   <div class="input note">
-    <label for="note">備註(選填)</label>
-    <input type="text" name="note" id="note"><br>
-   </div>
-  </form>
- </div>
-   <div id="submit">
-    <input type="button" value="返回" id="createroom_back">
-    <input type="button" value="建立房間" id="createroom_submit">
-   </div>
-   
-   <script type="text/javascript">
-   
-	   function print_value(){
-	   $(document).ready(function() {
-	       // 處理表單點擊事件
-	       var $form = $('#submit');
-	       $form.click(function() {
-	           submit();
-	       });
-// 將資料組成JSON格式
-   
-   var data_object = {
-       "sporttype": sporttype,
-       "roomname": roomname,
-       "location": location,
-       "people": people,
-       "gender": gender,
-       "note": note
-  
-   
-   };
 
-   // 將JSON格式轉換成字串
-   var data_string = JSON.stringify(data_object);
+    <div id="createroom" class="section db">
+        <div class="container-fluid">
+            <div class="section-title text-center">
+                <h3>嚙請立房塚蕭</h3>
+                <p>嚙瑾嚙踝蕭堨艂A嚙瞋嚙緯嚙踝蕭嚙請塚蕭</p>
+            </div><!-- end title -->
 
-   // 發出POST的AJAX請求
-   $.ajax({
-           type: "POST",
-           url: "api/createroom.do",
-           data: data_string,
-           crossDomain: true,
-           cache: false,
-           dataType: 'json',
-           timeout: 5000,
-           success: function (response) {
-               $('#flashMessage').html(response.message);
-               $('#flashMessage').show();
-               if(response.status == 200){
-                   updateSQLTable(response.response);
-               }
-           },
-           error: function () {
-               alert("無法連線到伺服器！");
-           }
-   });
-   
-   </script>
-   
-   
-</div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="contact_form">
+                        <div id="create"></div>
+                        <form id="createForm" name="createroom" novalidate="novalidate">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<i class="fas fa-home"></i>
+										<label for="roomname">嚙請塚蕭嚙磕嚙踝蕭</label>
+										<input class="form-control" id="roomname" type="text" placeholder="嚙請選蕭J嚙請塚蕭嚙磕嚙踝蕭"  required="required" data-validation-required-message="嚙請選蕭J嚙請塚蕭嚙磕嚙踝蕭.">
+										<p class="help-block text-danger"></p>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<i class="fas fa-basketball-ball"></i>
+										<label for="sporttypeselect">嚙畿嚙踝蕭嚙踝蕭嚙瞌</label>	
+										<form>
+											<select name="sporttypeselect" placeholder="嚙請選蕭僊B嚙踝蕭嚙踝蕭嚙瞌"  required="required" data-validation-required-message="嚙請選蕭僊B嚙踝蕭嚙踝蕭嚙瞌.">
+											嚙瑾<option value="jog">嚙瘠嚙稽</option>
+											嚙瑾<option value="basketball">嚙綞嚙緙</option>
+											嚙瑾<option value="baseball">嚙諄球</option>
+											嚙瑾<option value="soccer">嚙踝蕭嚙緙</option>
+											</select>
+										</form>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<i class="fas fa-calendar-alt"></i>
+										<label for="time">嚙踝蕭嚙褊時塚蕭</label>
+										<input class="form-control" id="time" type="date" placeholder="嚙請選蕭頇嚙踝蕭坋伅嚙�" required="required" data-validation-required-message="嚙請選蕭頇嚙踝蕭坋伅嚙�" >
+										<p class="help-block text-danger"></p>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<i class="fas fa-map-marker-alt"></i>
+										<label for="location">嚙踝蕭嚙褊地嚙瘢</label>
+										<input class="form-control" id="location" type="text" placeholder="嚙請選蕭J嚙踝蕭嚙褊地嚙瘢" required="required" data-validation-required-message="嚙請選蕭J嚙踝蕭嚙褊地嚙瘢"  >
+										<p class="help-block text-danger"></p>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+										<i class="fas fa-user-friends"></i>
+										<label for="peopleselect">嚙踝蕭嚙褊需求嚙瘡嚙踝蕭</label>
+											<form>
+												<select name="peopleselect" placeholder="嚙請選蕭頇嚙踝蕭妘怳j嚙箠嚙箴嚙褒人嚙踝蕭""  required="required" data-validation-required-message="嚙請選蕭頇嚙踝蕭吨H嚙踝蕭.">
+											嚙瑾	<option value="one">1</option>
+											嚙瑾	<option value="two">2</option>
+											嚙瑾	<option value="three">3</option>
+											嚙瑾	<option value="four">4</option>
+												</select>
+											</form>
+										<p class="help-block text-danger"></p>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+										<i class="fas fa-user-slash"></i>
+										<label for="genderselect">嚙踝蕭嚙褊性別嚙踝蕭嚙踝蕭</label>
+											<form>
+												<select name="genderselect" placeholder="嚙請選蕭頇嚙踝蕭囥囮O嚙踝蕭嚙踝蕭""  required="required" data-validation-required-message="嚙請選蕭頇嚙踝蕭囥囮O嚙踝蕭嚙踝蕭.">
+											嚙瑾	<option value="boy">嚙線嚙踝蕭嚙糊嚙踝蕭</option>
+											嚙瑾	<option value="girl">嚙線嚙踝蕭嚙糊嚙踝蕭</option>
+											嚙瑾	<option value="norestriction">嚙褊別嚙踝蕭嚙踝蕭</option>
+											嚙瑾	
+												</select>
+											</form>
+										<p class="help-block text-danger"></p>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+										<i class="	fas fa-user-check"></i>
+										<label for="ageselect">嚙踝蕭嚙褊年嚙誰哨蕭嚙踝蕭</label>
+											<ul class=cell1>
+												<form>
+													<select name="ageselect" placeholder="嚙請選蕭頇嚙踝蕭呇~嚙誰哨蕭嚙踝蕭"  required="required" data-validation-required-message="嚙請選蕭頇嚙踝蕭呇~嚙誰下嚙踝蕭">
+												嚙瑾		<option value="one">1嚙踝蕭</option>
+												嚙瑾		<option value="two">2嚙踝蕭</option>
+												嚙瑾		<option value="three">3嚙踝蕭</option>
+												嚙瑾		<option value="four">4嚙踝蕭	</option>
+														<option value="nope">嚙踝蕭嚙踝蕭	</option>
+													</select>
+												</form>
+											</ul>
+											<ul class=cell2>嚙踝蕭</ul>
+											<ul class=cell3>
+												<form>
+													<select name="ageselect" placeholder="嚙請選蕭頇嚙踝蕭呇~嚙誰哨蕭嚙踝蕭"  required="required" data-validation-required-message="嚙請選蕭頇嚙踝蕭呇~嚙誰上嚙踝蕭.">
+											嚙瑾			<option value="one">1嚙踝蕭</option>
+											嚙瑾			<option value="two">2嚙踝蕭</option>
+											嚙瑾			<option value="three">3嚙踝蕭</option>
+											嚙瑾			<option value="nope">嚙踝蕭嚙踝蕭	</option>
+													</select>
+												</form>
+											</ul>
+											
+										<p class="help-block text-danger"></p>
+									</div>
+									
+									
+								<div class="col-lg-12">
+									<button id="backButton" class="sim-btn hvr-rectangle-out" data-text="Send Message" type="submit">嚙踝蕭^</button>
+									<button id="createroomButton" class="sim-btn hvr-rectangle-out" data-text="Send Message" type="submit">嚙諍立房塚蕭</button>
+								</div>
+							</div>
+						</form>
+                    </div>
+                </div><!-- end col -->
+            </div><!-- end row -->
+        </div><!-- end container -->
+    </div><!-- end section -->
+
+
 </body>
 </html>
