@@ -70,53 +70,62 @@
 
 <body>
     <div id="container">
-        <div id="header">
-            <h1><a href="http://cakephp.org/">CakePHP: the rapid development php framework</a></h1>
-        </div>
+        
         <div id="content">
             <h2>更新會員資料</h2>
             <a href="member.html">會員清單</a>
             <a href="rooms.html">房間列表</a>
 
-            <div id="flashMessage" class="message" style="display: none;"></div>
-
-            <form id="form" accept-charset="utf-8">
-                <div style="display:none;"><input type="hidden" name="_method" value="POST"></div>
-                <div class="input text required">
-                    <label for="member_firstname">姓氏</label>
-                    <input name="name" maxlength="30" type="text" id="member_firstname" required="required">
-                </div>
-                <div class="input text required">
-                    <label for="member_lastname">名字</label>
-                    <input name="name" maxlength="30" type="text" id="member_lastname" required="required">
-                </div>
-                <div class="input email required">
-                    <label for="member_email">電子信箱</label>
-                    <input name="email" maxlength="50" type="email" id="member_email" required="required" disabled>
-                </div>
-                <div class="input password required">
-                    <label for="member_password">密碼</label>
-                    <input name="password" type="password" id="member_password" required="required">
-                </div>
-                <div class="input gender required">
-                    <label for="member_gender">性別</label>
-					<input type="radio" name="gender" value="man">男<br>
-					<input type="radio" name="gender" value="woman">女<br>
-                </div>
-                <div class="input date required">
-                    <label for="member_Dob">生日</label>
-                      <input type="date" name="Dob">
-                </div>
-                <div class="input date required">
-                    <label for="member_login_times">更新時間</label>
-                    <input name="login_times" type="text" id="member_login_times" disabled>
-                </div>
-                <div class="input text required">
-                    <label for="member_status">會員組別</label>
-                    <input name="status" type="text" id="member_status" disabled>
-                </div>
-                <div class="submit"><input type="button" value="更新" id="submit"></div>
-            </form>
+            <div class="row">
+<!-- 						<div class="col-md-2"></div> -->
+		                <div class="">
+		                    <div align="center" class="contact_form" >
+		                        <div id="message"></div>
+					         		<form id="contactForm" name="sentMessage" novalidate="novalidate">    
+						             <div class="row">
+						             	<div class="col-md-12">						
+										<div class="form-group">   
+							                <div class="input text required">
+							                    <input class="form-control" id="member_firstname" type="text" placeholder="請輸入名字" required="required" data-validation-required-message="Please enter your firstname.">
+												<p class="help-block text-danger"></p>
+							                </div>
+						                </div>
+						                </div>
+						                <div class="col-md-12">
+										<div class="form-group">
+											<input class="form-control" id="member_lastname" type="text" placeholder="請輸入姓氏" required="required" data-validation-required-message="Please enter your lastname.">
+											<p class="help-block text-danger"></p>
+										</div>
+									</div>
+									<div class="col-md-12">
+										<div class="form-group">
+											<input class="form-control" id="member_email" type="email" placeholder="請輸入電子信箱" required="required" data-validation-required-message="Please enter your email address.">
+											<p class="help-block text-danger"></p>
+										</div>
+									</div>
+									<div class="col-md-12">
+										<div class="form-group">
+											<input class="form-control" id="member_password" type="password" placeholder="請輸入密碼" required="required" data-validation-required-message="Please enter your phone number.">
+											<p class="help-block text-danger"></p>
+										</div>
+									</div>
+									<div class="col-md-12">
+										<div class="form-group">
+											<input class="form-control" id="member_confirmpassword" type="password" placeholder="請再輸入一次密碼" required="required" data-validation-required-message="Please enter your phone number.">
+											<p class="help-block text-danger"></p>
+										</div>
+									</div>
+									
+									<div class="clearfix"></div>
+									<div class="col-lg-12 text-center">
+										<div id="success"></div>
+										<button id="submit" class="sim-btn hvr-rectangle-out" data-text="Register" type="submit">Register</button>
+									</div>
+									</div>
+						     	</form>
+					         </div>
+					    </div>
+					 </div>
 
             <script type="text/javascript">
                 // 取得網址參數
