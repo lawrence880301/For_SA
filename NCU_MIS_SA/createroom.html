@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="BIG5">
+<meta charset="BIG5">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://kit.fontawesome.com/c294d8ecbc.js"></script>
+    <!-- Basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">   
+   
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">	
+ 
+     <!-- Site Metas -->
+    <title>Deluxe Interior - Responsive HTML5 OnePage Template</title>  
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Site Icons -->
+    <link rel="shortcut icon" href="statics/images/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="statics/images/apple-touch-icon.png">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="statics/css/bootstrap.min.css">
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="statics/css/style.css">
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="statics/css/responsive.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="statics/css/custom.css">
+	<script src="statics/js/modernizr.js"></script> <!-- Modernizr -->
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.statics/js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+      <div class="container-fluid">
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">
+			<img class="img-fluid" src="statics/images/logo.png" alt="" />
+		</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fa fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger active" href="index.html">首頁</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="register.html">註冊/登入</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="rooms.html">房間列表</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="createroom.html">創建房間</a>
+            </li>
+			<li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="profile.html">個人資料</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+<title>Insert title here</title>
+</head>
+<body>
+
+    <div id="createroom" class="section db">
+        <div class="container-fluid">
+            <div class="section-title text-center">
+                <h3>創立房間</h3>
+                <p>一鍵建立你想要的房間</p>
+            </div><!-- end title -->
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="contact_form">
+                        <div id="create"></div>
+                        <form id="createForm" name="createroom" novalidate="novalidate">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<i class="fas fa-home"></i>
+										<label for="roomname">房間名稱</label>
+										<input class="form-control" id="roomname" type="text" placeholder="請輸入房間名稱"  required="required" data-validation-required-message="請輸入房間名稱.">
+										<p class="help-block text-danger"></p>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<i class="fas fa-basketball-ball"></i>
+										<label for="sporttypeselect">運動類別</label>	
+										<form>
+											<select name="sporttypeselect" placeholder="請選擇運動類別"  required="required" data-validation-required-message="請選擇運動類別.">
+											　<option value="jog">慢跑</option>
+											　<option value="basketball">籃球</option>
+											　<option value="baseball">棒球</option>
+											　<option value="soccer">足球</option>
+											</select>
+										</form>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<i class="fas fa-calendar-alt"></i>
+										<label for="time">活動時間</label>
+										<input class="form-control" id="time" type="date" placeholder="請選擇活動時間" required="required" data-validation-required-message="請選擇活動時間" >
+										<p class="help-block text-danger"></p>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<i class="fas fa-map-marker-alt"></i>
+										<label for="location">活動地點</label>
+										<input class="form-control" id="location" type="text" placeholder="請輸入活動地點" required="required" data-validation-required-message="請輸入活動地點"  >
+										<p class="help-block text-danger"></p>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+										<i class="fas fa-user-friends"></i>
+										<label for="peopleselect">活動需求人數</label>
+											<form>
+												<select name="peopleselect" placeholder="請選擇活動最大可容納人數""  required="required" data-validation-required-message="請選擇活動人數.">
+											　	<option value="one">1</option>
+											　	<option value="two">2</option>
+											　	<option value="three">3</option>
+											　	<option value="four">4</option>
+												</select>
+											</form>
+										<p class="help-block text-danger"></p>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+										<i class="fas fa-user-slash"></i>
+										<label for="genderselect">活動性別限制</label>
+											<form>
+												<select name="genderselect" placeholder="請選擇活動性別限制""  required="required" data-validation-required-message="請選擇活動性別限制.">
+											　	<option value="boy">只限男性</option>
+											　	<option value="girl">只限女性</option>
+											　	<option value="norestriction">性別不限</option>
+											　	
+												</select>
+											</form>
+										<p class="help-block text-danger"></p>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+										<i class="	fas fa-user-check"></i>
+										<label for="ageselect">活動年齡限制</label>
+											<ul class=cell1>
+												<form>
+													<select name="ageselect" placeholder="請選擇活動年齡限制"  required="required" data-validation-required-message="請選擇活動年齡下限">
+												　		<option value="one">1歲</option>
+												　		<option value="two">2歲</option>
+												　		<option value="three">3歲</option>
+												　		<option value="four">4歲	</option>
+														<option value="nope">不限	</option>
+													</select>
+												</form>
+											</ul>
+											<ul class=cell2>至</ul>
+											<ul class=cell3>
+												<form>
+													<select name="ageselect" placeholder="請選擇活動年齡限制"  required="required" data-validation-required-message="請選擇活動年齡上限.">
+											　			<option value="one">1歲</option>
+											　			<option value="two">2歲</option>
+											　			<option value="three">3歲</option>
+											　			<option value="nope">不限	</option>
+													</select>
+												</form>
+											</ul>
+											
+										<p class="help-block text-danger"></p>
+									</div>
+									
+									
+								<div class="col-lg-12">
+									<button id="backButton" class="sim-btn hvr-rectangle-out" data-text="Send Message" type="submit">返回</button>
+									<button id="createroomButton" class="sim-btn hvr-rectangle-out" data-text="Send Message" type="submit">建立房間</button>
+								</div>
+							</div>
+						</form>
+                    </div>
+                </div><!-- end col -->
+            </div><!-- end row -->
+        </div><!-- end container -->
+    </div><!-- end section -->
+
+
+</body>
+</html>
