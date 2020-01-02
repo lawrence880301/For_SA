@@ -159,35 +159,35 @@
 
 
 
-                function getMember() {
-                    $.ajax({
-                        type: "GET",
-                        url: "api/member.do",
-                        crossDomain: true,
-                        data: "id=" + id,
-                        cache: false,
-                        dataType: 'json',
-                        timeout: 5000,
-                        success: function (response) {
-                            if(response.status == 200){
-                            	updateSQLTable(response.response);
-                            	document.getElementById('member_firstname').value = response['response']['data'][0]['firstname'];
-                            	document.getElementById('member_lastname').value = response['response']['data'][0]['lastname'];
-                            	document.getElementById('member_email').value = response['response']['data'][0]['email'];
-                            	document.getElementById('member_password').value = response['response']['data'][0]['password'];
-                            	document.getElementById('member_gender').value = response['response']['data'][0]['gender'];
-                            	document.getElementById('member_Dob').value = response['response']['data'][0]['Dob'];
+//                 function getMember() {
+//                     $.ajax({
+//                         type: "GET",
+//                         url: "api/member.do",
+//                         crossDomain: true,
+//                         data: "id=" + id,
+//                         cache: false,
+//                         dataType: 'json',
+//                         timeout: 5000,
+//                         success: function (response) {
+//                             if(response.status == 200){
+//                             	updateSQLTable(response.response);
+//                             	document.getElementById('member_firstname').value = response['response']['data'][0]['firstname'];
+//                             	document.getElementById('member_lastname').value = response['response']['data'][0]['lastname'];
+//                             	document.getElementById('member_email').value = response['response']['data'][0]['email'];
+//                             	document.getElementById('member_password').value = response['response']['data'][0]['password'];
+//                             	document.getElementById('member_gender').value = response['response']['data'][0]['gender'];
+//                             	document.getElementById('member_Dob').value = response['response']['data'][0]['Dob'];
                             	
-                            	document.getElementById('member_login_times').value = response['response']['data'][0]['login_times'];
-                            	document.getElementById('member_status').value = response['response']['data'][0]['status'];
-                            }
-                            console.log(response);
-                        },
-                        error: function () {
-                            alert("無法連線到伺服器！");
-                        }
-                    });
-                }
+//                             	document.getElementById('member_login_times').value = response['response']['data'][0]['login_times'];
+//                             	document.getElementById('member_status').value = response['response']['data'][0]['status'];
+//                             }
+//                             console.log(response);
+//                         },
+//                         error: function () {
+//                             alert("無法連線到伺服器！");
+//                         }
+//                     });
+//                 }
 
 
                 

@@ -137,9 +137,45 @@
         </div><!-- end container -->
     </div><!-- end section -->
     
-    </div>
+
 
 </body>
+<script src="statics/js/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+	function getMemberByID() {
+	    $.ajax({
+	            type: "GET",
+	            url: "api/member.do",
+	            crossDomain: true,
+	            cache: false,
+	            data: {id: localStorage.getItem('currentID')},
+	            dataType: 'json',
+	            timeout: 5000,
+	            success: function (response) {
+	                if(response.status == 200){
+// 	                	alert(JSON.stringify(response.response.data[0]));
+	                	$('#name').val(response.response.data[0].firstName);
+	                	$('#gender ').val(response.response.data[0].gender);
+	                	$('#age').val(response.response.data[0].Dob);
+	                	$('#email').val(response.response.data[0].email);
+	                }
+	                console.log(response);
+	            },
+	            error: function () {
+	            	console.log(response);
+	                alert("無法連線到伺服器！");
+	            }
+	    });
+	}
+	getMemberByID();
+});
+
+
+
+</script>
 </html>
 
 
