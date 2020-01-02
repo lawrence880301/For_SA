@@ -78,10 +78,7 @@ public class Member {
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
-        /** 取回原有資料庫內該名會員之更新時間分鐘數與組別 */
-        getLoginTimesStatus();
-        /** 計算會員之組別 */
-        calcAccName();
+
     }
     
     /**
@@ -132,11 +129,11 @@ public class Member {
      * @return the name 回傳會員姓名
      */
 	public String getFirstName() {
-		return firstName;
+		return this.firstName;
 	}
 
 	public String getLastName() {
-		return lastName;
+		return this.lastName;
 	}
     /**
      * 取得會員之密碼
@@ -148,7 +145,7 @@ public class Member {
     }
     
 	public String getGender() {
-		return gender;
+		return this.gender;
 	}
     
     /**
@@ -170,7 +167,7 @@ public class Member {
     }
     
 	public Date getDob() {
-		return Dob;
+		return this.Dob;
 	}
     
     /**

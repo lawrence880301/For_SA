@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Login</title>
+</head>
+
+<body>
+
+
+  <form id="login-form">
+    <input id="userEmail" type="text" placeholder="Enter email" value="" />
+    <input id="userPwd" type="password" placeholder="Enter Password" value="" />
+    <input id="login_btn" type="submit" value="Login" onClick="check()" />
+  </form>
+
+  <script src="statics/js/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+  <script>
+    // check if stored data from register-form is equal to entered data in the   login-form
+
+    function check() {
+
+      // entered data from the login-form
+      var userEmail = document.getElementById('userEmail');
+      var userPwd = document.getElementById('userPwd');
+
+      var Email = userEmail.value;
+      var Pwd = userPwd.value;
+
+      var request = {
+        'email': Email,
+        'pwd': Pwd
+      };
+      var data_string = JSON.stringify(request);
+      $.ajax({
+        type: "POST",
+        url: "/NCU_MIS_SA/api/login.do",
+        async: true,
+        data: data_string,
+        dataType: 'json',
+        success: function (response) {
+          if (response.response.email == Email && response.response.pwd == Pwd) {
+            console.log(JSON.stringify(response));
+            //alert("successfully logged in");
+            localStorage.setItem('currentEmail', response.response.email);
+            localStorage.setItem('currentPwd', response.response.pwd);
+            localStorage.setItem('currentID', response.response.member_id);
+          }
+          alert(JSON.stringify(response));
+        },
+        error: function () {
+          alert("not connect");
+        }
+      });
+      
+      // check if stored data from register-form is equal to data from login form
+
+    }
+
+
+  </script>
+
+</body>
+
+</html>
