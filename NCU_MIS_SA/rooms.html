@@ -144,10 +144,12 @@
                             <p class="lead">房間名稱:耶耶<br>運動類型:籃球<br>人數限制:無</p> 
                     	</div>
  						<div class="img-overlay" align=center > 
- 							<h3>放房間名稱</h3> 
+ 							<div class="inline-button" style="position:absolute; top:100px; left:10px;" >
 <!--  							<a class="hoverbutton global-radius" data-toggle="modal" data-target="#exampleModalLong"><i class="fa fa-picture-o"></i></a>  -->
-							<div style="line-height:30px;">
-								<button type="button" class="btn-light hvr-rectangle-out" data-toggle="modal" data-target="#exampleModalLong">詳細資料</button>
+								
+									<button type="button" class="btn-light hvr-rectangle-out" data-toggle="modal" data-target="#exampleModalLong">詳細資料</button>
+									<button id="s1" value="加入房間" text="加入房間" type="button" class="btn-light hvr-rectangle-out" onclick="changeValue();"></button>
+							
 							</div>
 						</div> 
  					</div> 
@@ -163,75 +165,6 @@
  					</div> 
  				</div> 
 				
- 				<div class="col-md-4 col-sm-6 gallery-grid gal_b gal_c"> 
- 					<div class="gallery-single fix"> 
- 						<img src="uploads/gallery_img-03.jpg" class="img-fluid" alt="Image"> 
- 						<div class="img-overlay"> 
- 							<h3>Indoor Interior</h3> 
- 							<a href="uploads/gallery_img-03.jpg" data-rel="prettyPhoto[gal]" class="hoverbutton global-radius"><i class="fa fa-picture-o"></i></a> 
- 						</div>
- 					</div> 
- 				</div> 
-				
- 				<div class="col-md-4 col-sm-6 gallery-grid gal_b gal_a"> 
- 					<div class="gallery-single fix"> 
- 						<img src="uploads/gallery_img-04.jpg" class="img-fluid" alt="Image"> 
- 					<div class="img-overlay"> 
- 							<h3>Indoor Interior</h3> 
- 							<a href="uploads/gallery_img-04.jpg" data-rel="prettyPhoto[gal]" class="hoverbutton global-radius"><i class="fa fa-picture-o"></i></a> 
-						</div> 
- 					</div> 
- 				</div> 
-				
- 				<div class="col-md-4 col-sm-6 gallery-grid gal_c gal_d"> 
- 					<div class="gallery-single fix"> 
- 						<img src="uploads/gallery_img-05.jpg" class="img-fluid" alt="Image"> 
- 						<div class="img-overlay"> 
- 							<h3>Living Room </h3> 
- 							<a href="uploads/gallery_img-05.jpg" data-rel="prettyPhoto[gal]" class="hoverbutton global-radius"><i class="fa fa-picture-o"></i></a> 
- 						</div> 
- 					</div> 
- 				</div> 
-				
- 				<div class="col-md-4 col-sm-6 gallery-grid gal_c gal_d"> 
- 					<div class="gallery-single fix"> 
- 						<img src="uploads/gallery_img-06.jpg" class="img-fluid" alt="Image"> 
- 						<div class="img-overlay"> 
- 							<h3>Living Room </h3> 
- 							<a href="uploads/gallery_img-06.jpg" data-rel="prettyPhoto[gal]" class="hoverbutton global-radius"><i class="fa fa-picture-o"></i></a> 
-						</div> 
-					</div> 
-				</div> 
-				
- 				<div class="col-md-4 col-sm-6 gallery-grid gal_c gal_b"> 
- 					<div class="gallery-single fix">
- 						<img src="uploads/gallery_img-07.jpg" class="img-fluid" alt="Image"> 
- 						<div class="img-overlay"> 
- 							<h3>Ecommercial Room </h3>
- 							<a href="uploads/gallery_img-07.jpg" data-rel="prettyPhoto[gal]" class="hoverbutton global-radius"><i class="fa fa-picture-o"></i></a> 
- 						</div> 
- 					</div> 
- 				</div> 
-				
- 				<div class="col-md-4 col-sm-6 gallery-grid gal_d gal_c"> 
- 					<div class="gallery-single fix"> 
- 						<img src="uploads/gallery_img-08.jpg" class="img-fluid" alt="Image"> 
- 						<div class="img-overlay"> 
- 							<h3>Ecommercial Room </h3> 
- 							<a href="uploads/gallery_img-08.jpg" data-rel="prettyPhoto[gal]" class="hoverbutton global-radius"><i class="fa fa-picture-o"></i></a> 
- 						</div> 
- 					</div> 
- 				</div> 
-				
- 				<div class="col-md-4 col-sm-6 gallery-grid gal_d gal_a"> 
- 					<div class="gallery-single fix"> 
- 						<img src="uploads/gallery_img-09.jpg" class="img-fluid" alt="Image"> 
- 					<div class="img-overlay"> 
- 							<h3>Ecommercial Room </h3> 
- 							<a href="uploads/gallery_img-09.jpg" data-rel="prettyPhoto[gal]" class="hoverbutton global-radius"><i class="fa fa-picture-o"></i></a> 
- 						</div> 
- 					</div> 
- 				</div> 
 				
  			</div> 
 
@@ -272,7 +205,14 @@
     
 	</script>
   <script>  
- 
+ 	
+  
+  	function changeValue(){
+  		var btnVal=document.getElementById("s1");
+  		if (btnVal.value=="加入房間"){
+  			btnVal.value=="已加入";
+  		}
+  	}
 	
   	var [client_cart_obj, client_cart_amount]  = getCartDataFromClient();
     
