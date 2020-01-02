@@ -2,87 +2,144 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="https://kit.fontawesome.com/c294d8ecbc.js"></script>
-<meta charset="BIG5">
-
 <style>
-#top{
-  background-color: lightgrey;
-  width: 1200px;
-  border: 10px solid green;
-  padding: 20px;
-  text-align: right;
-}
-
-#profileinside{
-  background-color: lightgrey;
-  width: 1050px;
-  border: 5px solid green;
-  padding: 100px;
-}
-
-#profilecontent{
- color: black;
- text-align: center;
- padding-left: 10%;
- font-size: 24px; 
-}
 
 </style>
+<script src="https://kit.fontawesome.com/c294d8ecbc.js"></script>
+    <!-- Basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">   
+   
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">	
+ 
+     <!-- Site Metas -->
+    <title>Wundon Xican-桑幾勒</title>  
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Site Icons -->
+    <link rel="shortcut icon" href="statics/images/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="statics/images/apple-touch-icon.png">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="statics/css/bootstrap.min.css">
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="statics/css/style.css">
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="statics/css/responsive.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="statics/css/custom.css">
+	<script src="statics/js/modernizr.js"></script> <!-- Modernizr -->
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.statics/js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+      <div class="container-fluid">
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">
+			<img class="img-fluid" src="statics/images/logo.png" alt="" />
+		</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fa fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link js-scroll-triggere" href="index.html">首頁</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="register.html">註冊/登入</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="rooms.html">房間列表</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="createroom.html">創建房間</a>
+            </li>
+			<li class="nav-item">
+              <a class="nav-link js-scroll-trigger active" href="profile.html">個人資料</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="joinedroomlist.html">已加入房間</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
 
 <title>Insert title here</title>
 </head>
 <body>
 
+    <div id="profile" class="section wb">
+        <div class="container-fluid">
+            <div class="section-title text-center">
+                <h3>個人資料</h3>
+                <p>以下是使用者的個人資料</p><br>
+                
+            </div><!-- end title -->
+            
 
-
- <div id="top">
-  <input type="button" value="����" id="home">
-  <input type="button" value="�ڪ��ж�" id="myroom">
-  <input type="button" value="�w�[�J�ж�" id="enterroomlist">
-  <input type="button" value="�ӤH���" id="profie">
- </div>
- <br>
- <br>
- <br>
- <div id="profileinside">
- <div id="test">
- <div id="profilecontent">
-  <div id="pro_name">
-   <i class="fas fa-user"></i>
-   <label for="user_name">�m�W</label><br>
-  </div>
-    <div id="text1">
-     <input type=text value="" id="user_name">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="contact_form">
+                        <div id="message"></div>
+                        <form id="contactForm" name="sentMessage" novalidate="novalidate">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<i class="fas fa-user"></i>
+										<label for="name">姓名</label>
+										<input class="form-control" id="name" type="text" placeholder="User's name" disabled style="background:silver";>
+										<p class="help-block text-danger"></p>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<i class="fas fa-male"></i>
+										<i class="fas fa-female"></i>	
+										<label for="gender">性別</label>
+										<input class="form-control" id="gender" type="text" placeholder="User's gender" disabled style="background:silver"; >
+										<p class="help-block text-danger"></p>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<i class="fas fa-birthday-cake"></i>
+										<label for="age">年齡</label>
+										<input class="form-control" id="age" type="text" placeholder="User's age" disabled style="background:silver";  >
+										<p class="help-block text-danger"></p>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<i class="fas fa-envelope"></i>
+										<label for="email">email</label>
+										<input class="form-control" id="email" type="email" placeholder="User's email" disabled style="background:silver"; >
+										<p class="help-block text-danger"></p>
+									</div>
+					
+								
+								<div class="col-lg-12 text-center">
+									<div align="right">
+										<button  id="sendAdjustButton" class="sim-btn hvr-rectangle-out" data-text="Send Message" type="submit">修改資料</button>
+					
+									</div>
+								</div>
+						</form>
+                    </div>
+                </div><!-- end col -->
+            </div><!-- end row -->
+        </div><!-- end container -->
+    </div><!-- end section -->
+    
     </div>
-  
-  <div id="pro_gender">
-   <i class="fas fa-male"></i> 
-   <i class="fas fa-female"></i>  
-   <label id="user_gender">�ʧO</label>
-  </div>
-    <div id="text2">
-     <input type="text" value="" id="user_gender">
-    </div> 
-
-  
-  <div id="pro_dob">
-   <i class="fas fa-birthday-cake"></i>
-   <label id="user_dob">�ͤ�</label>
-  </div>
-    <div>
-     <input type="text" value="" id="user_dob">
-    </div> 
-  
-  <div id="pro_email">
-   <i class="fas fa-envelope"></i>
-   <label id="user_email">email</label>
-  </div>
-    <div>
-     <input type="text" value="" id="user_email">
-    </div> 
- </div>
- </div>
 
 </body>
-</html>er4mn32222k09=p;['m 
+</html>
+
+

@@ -109,6 +109,7 @@ h6 {
     font-size: 13px
 }
 
+
 h1 a,
 h2 a,
 h3 a,
@@ -128,6 +129,17 @@ h5 a:hover,
 h6 a:hover {
     opacity: .8
 }
+
+
+
+
+
+
+
+
+
+
+
 
 a {
     color: #222222;
@@ -157,7 +169,7 @@ a,
 .lead {
     font-size: 18px;
     line-height: 30px;
-    color: #767676;
+    color: #ffffff;
     margin: 0;
     padding: 0;
 }

@@ -1,0 +1,86 @@
+*{
+	margin:0;
+	padding:0;
+}
+
+/* override bootstrap */
+
+button {
+	font-size:none;
+	font-family:none;
+}
+
+/* end */
+
+.login-hero{
+	width:100%;
+	background-image:linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url(banner.jpg);
+	background-position:center;
+	background-size:cover;
+	position:absolute;
+}
+
+.login-form-box{
+	width:1000px;
+	height:1400px;
+	position:relative;
+	margin:6% auto;
+	background:#fff;
+	padding:5px;
+/* 	overflow:hidden; */
+}
+
+.login-button-box{
+	width:220px;
+	margin:35 auto;
+	position:relative;
+	box-shadow:0,0,20px,9px #ff61241f;
+	border-radius:30px;
+	box-color:gray;
+}
+
+.login-toggle-btn{
+	padding:10px 30px;
+	cursor:pointer;
+	background:transparent;
+	border:0;
+	outline:none;
+	position:relative;
+}
+
+#login-btn{
+	top:0;
+	left:0;
+	position:absolute;
+	width:110px;
+	height:100%;
+	background:linear-gradient(to right,#5a4091,#5a4091);
+	border-radius:30px;
+	transition:.5s;
+}
+
+.login-social-icons{
+	margin:30px auto;
+	text-alin:center;
+}
+
+.login-social-icons img{
+	width:30px;
+}
+
+#login{
+	left:60px;
+}
+
+#register{
+	left:90px;
+}
+
+
+
+
+
+
+
+
+

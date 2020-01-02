@@ -1,152 +1,210 @@
 <!DOCTYPE html>
 <html>
-<style>
-body {
-  padding-top: 100px;
-   font-family: monaco, monospace;
-   font-size: 150%;
-   font-weigth: 150%; 
-   background: url(http://218.16.125.44:81/img/20171020/131529739258878460.jpg);
-   background-size: cover;
-}
-#header{
-text-align: center;
-}
-#form{
-color: white;
-font-size: 100%;
-text-align: left;
-padding-left: 38%;
-} 
-#submit{
-color: white;
-font-size: 100%;
-text-align: center;
-padding-top: 3%; 
-} 
-#header{
-color: white;
-font-size: 100%;
-text-align: center;
-} 
-</style>
 <head>
-<meta charset="BIG5">
+<style>
+.inline-button{
+align: right;
+}
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://kit.fontawesome.com/c294d8ecbc.js"></script>
+    <!-- Basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">   
+   
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">	
+ 
+     <!-- Site Metas -->
+    <title>Wundon Xican-桑幾勒</title>  
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Site Icons -->
+    <link rel="shortcut icon" href="statics/images/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="statics/images/apple-touch-icon.png">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="statics/css/bootstrap.min.css">
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="statics/css/style.css">
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="statics/css/responsive.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="statics/css/custom.css">
+	<script src="statics/js/modernizr.js"></script> <!-- Modernizr -->
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.statics/js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+      <div class="container-fluid">
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">
+			<img class="img-fluid" src="statics/images/logo.png" alt="" />
+		</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fa fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="index.html">首頁</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="register.html">註冊/登入</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="rooms.html">房間列表</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger active" href="createroom.html">創建房間</a>
+            </li>
+			<li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="profile.html">個人資料</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="joinedroomlist.html">已加入房間</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+<title>Insert title here</title>
 </head>
-
 <body>
-<div id="container">
- <div id="header">
-  <h1>�ӫإߩж��a</h1><br>
- </div>
-  
- <div id="content">
-  <form id="form">
-   <div class="input sporttype">
-    <label for="sporttype">�п�ܹB������</label>
-    <select name="sporttype" id="sporttype" onchange="print_value1();">
-     <option value="jog">�C�]</option>
-     <option value="basketball">�x�y</option>
-     <option value="volleyball">�Ʋy</option>
-     <option value="baseball">�βy</option>
-    </select>
-   </div>
-    
-   <div class="input roomname">
-    <label for="roomname">�п�J�ж��W��</label>
-    <input type="text" name="roomname" id="roomname">
-   </div>
-   
-   <div class="input time">
-    <label for="act_date">�п�ܬ��ʮɶ�</label>
-    <input type="date" name="date" id="act_date">
-   </div> 
-    
-   <div class="input location">
-    <label for="act_location">�п�J���ʦa�I</label>
-    <input type="text" name="location" id="act_location">
-   </div> 
-    
-   <div class="input people">
-    <label for="act_people">�п�ܬ��ʤH��</label>
-    <select name="people" id="act_people" onchange="print_value2();">
-     <option value="one">1</option>
-     <option value="two">2</option>
-     <option value="three">3</option>
-     <option value="four">4</option>
-     <option value="five">5</option>
-    </select>
-   </div>
-    
-   <div class="input gender">
-    <label for="act_gender">�п�ܩʧO����</label>
-    <select name="gender" id="act_gender" onchange="print_value3();">
-     <option value="boy">�u���k��</option>
-     <option value="girl">�u���k��</option>
-     <option value="nope">����</option>
-    </select>
-   </div>
-    
-   <div class="input note">
-    <label for="note">�Ƶ�(���)</label>
-    <input type="text" name="note" id="note"><br>
-   </div>
-  </form>
- </div>
-   <div id="submit">
-    <input type="button" value="��^" id="createroom_back">
-    <input type="button" value="�إߩж�" id="createroom_submit">
-   </div>
-   
-   <script type="text/javascript">
-   
-	   function print_value(){
-	   $(document).ready(function() {
-	       // �B�z�����I���ƥ�
-	       var $form = $('#submit');
-	       $form.click(function() {
-	           submit();
-	       });
-// �N��Ʋզ�JSON�榡
-   
-   var data_object = {
-       "sporttype": sporttype,
-       "roomname": roomname,
-       "location": location,
-       "people": people,
-       "gender": gender,
-       "note": note
-  
-   
-   };
 
-   // �NJSON�榡�ഫ���r��
-   var data_string = JSON.stringify(data_object);
+    <div id="createroom" class="section wb">
+        <div class="container-fluid">
+            <div class="section-title text-center">
+                <h3>創建房間</h3>
+                <p>一鍵建立你想要的房間</p>
+            </div><!-- end title -->
 
-   // �o�XPOST��AJAX�ШD
-   $.ajax({
-           type: "POST",
-           url: "api/createroom.do",
-           data: data_string,
-           crossDomain: true,
-           cache: false,
-           dataType: 'json',
-           timeout: 5000,
-           success: function (response) {
-               $('#flashMessage').html(response.message);
-               $('#flashMessage').show();
-               if(response.status == 200){
-                   updateSQLTable(response.response);
-               }
-           },
-           error: function () {
-               alert("�L�k�s�u����A���I");
-           }
-   });
-   
-   </script>
-   
-   
-</div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="contact_form">
+                        <div id="create"></div>
+                        <form id="createForm" name="createroom" novalidate="novalidate">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<i class="fas fa-home"></i>
+										<label for="roomname">房間名稱</label>
+										<input class="form-control" id="roomname" type="text" placeholder="請輸入房間名稱"  required="required" data-validation-required-message="請輸入房間名稱.">
+										<p class="help-block text-danger"></p>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<i class="fas fa-basketball-ball"></i>
+										<label for="sporttypeselect">運動類別</label>	
+										<form>
+											<select name="sporttypeselect" placeholder="請選擇運動類別"  required="required" data-validation-required-message="請選擇運動類別.">
+											　<option value="jog">慢跑</option>
+											　<option value="basketball">籃球</option>
+											　<option value="baseball">棒球</option>
+											　<option value="soccer">足球</option>
+											</select>
+										</form>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<i class="fas fa-calendar-alt"></i>
+										<label for="time">活動時間</label>
+										<input class="form-control" id="time" type="date" placeholder="請選擇活動時間" required="required" data-validation-required-message="請選擇活動時間" >
+										<p class="help-block text-danger"></p>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<i class="fas fa-map-marker-alt"></i>
+										<label for="location">活動地點</label>
+										<input class="form-control" id="location" type="text" placeholder="請輸入活動地點" required="required" data-validation-required-message="請輸入活動地點"  >
+										<p class="help-block text-danger"></p>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+										<i class="fas fa-user-friends"></i>
+										<label for="peopleselect">活動需求人數</label>
+											<form>
+												<select name="peopleselect" placeholder="請選擇活動最大可容納人數""  required="required" data-validation-required-message="請選擇活動人數.">
+											　	<option value="one">1</option>
+											　	<option value="two">2</option>
+											　	<option value="three">3</option>
+											　	<option value="four">4</option>
+												</select>
+											</form>
+										<p class="help-block text-danger"></p>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+										<i class="fas fa-user-slash"></i>
+										<label for="genderselect">活動性別限制</label>
+											<form>
+												<select name="genderselect" placeholder="請選擇活動性別限制""  required="required" data-validation-required-message="請選擇活動性別限制.">
+											　	<option value="boy">只限男性</option>
+											　	<option value="girl">只限女性</option>
+											　	<option value="norestriction">性別不限</option>
+											　	
+												</select>
+											</form>
+										<p class="help-block text-danger"></p>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+										<i class="	fas fa-user-check"></i>
+										<label for="ageselect">活動年齡限制</label>
+												
+											<div class="form-inline">
+												<form >
+													<select name="ageselect" placeholder="請選擇活動年齡限制"  required="required" data-validation-required-message="請選擇活動年齡下限">
+												　		<option value="one">1歲</option>
+												　		<option value="two">2歲</option>
+												　		<option value="three">3歲</option>
+												　		<option value="four">4歲	</option>
+														<option value="nope">不限	</option>
+													</select>
+												</form>
+												<label>to</label>
+												<form >
+													<select name="ageselect" placeholder="請選擇活動年齡限制"  required="required" data-validation-required-message="請選擇活動年齡上限.">
+											　			<option value="one">1歲</option>
+											　			<option value="two">2歲</option>
+											　			<option value="three">3歲</option>
+											　			<option value="nope">不限	</option>
+													</select>
+												</form>
+										
+											</div>
+										</div>
+										<p class="help-block text-danger"></p>
+									</div>
+									
+									
+									<div class="inline-button">
+										
+										<button id="backButton" class="sim-btn hvr-rectangle-out" data-text="Send Message" type="submit">返回</button>
+										<button id="createroomButton" class="sim-btn hvr-rectangle-out" data-text="Send Message" type="submit">建立房間</button>
+										
+									</div>            
+				
+							</div>
+                    </div>
+                </div><!-- end col -->
+            </div><!-- end row -->
+            
+
+            
+        </div><!-- end container -->
+    </div><!-- end section -->
+
+
 </body>
 </html>
