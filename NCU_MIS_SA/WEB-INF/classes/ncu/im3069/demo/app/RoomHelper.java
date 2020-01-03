@@ -1,6 +1,8 @@
 package ncu.im3069.demo.app;
 
 import java.sql.*;
+import java.util.ArrayList;
+
 //import java.time.LocalDateTime;
 import org.json.*;
 //import java.util.Date;
@@ -31,6 +33,7 @@ public class RoomHelper {
     
     /** 靜態變數，儲存MemberHelper物件 */
     private static RoomHelper rh;
+    private static JoinedRoomListHelper jrlh;
     
     /** 儲存JDBC資料庫連線 */
     private Connection conn = null;
@@ -154,7 +157,7 @@ public class RoomHelper {
                 Date Date = rs.getDate("Date");
                 String Place = rs.getString("Place");
                 String Type = rs.getString("Type");
-                Date RoomDeadline = rs.getDate("RoomDeadline");
+                Date Createtime = rs.getDate("Createtime");
                 int Maxmember = rs.getInt("Maxmember");
                 String GenderRestriction = rs.getString("GenderRestriction");
                 int AgeUpperlimit = rs.getInt("AgeUpperlimit");
@@ -163,8 +166,8 @@ public class RoomHelper {
                 String Description = rs.getString("Description");
                 
                 /** 將每一筆會員資料產生一名新Member物件 */
-                r = new Room(room_id, Name, Date, Place, Type, RoomDeadline, Maxmember, 
-                			 GenderRestriction, AgeUpperlimit, AgeLowerlimit, Creator, Description);
+                r = new Room(room_id, Name, Date, Place, Type, Createtime, Maxmember, 
+                			 GenderRestriction, AgeUpperlimit, AgeLowerlimit, Description);
                 /** 取出該名會員之資料並封裝至 JSONsonArray 內 */
                 jsa.put(r.getData());
             }
@@ -196,7 +199,7 @@ public class RoomHelper {
     }
     
     /**
-     * 透過會員編號（ID）取得會員資料
+     * 透過房間編號（ID）取得房間資料
      *
      * @param id 房間編號
      * @return the JSON object 回傳SQL執行結果與該房間編號之房間資料
@@ -243,7 +246,7 @@ public class RoomHelper {
                 Date Date = rs.getDate("Date");
                 String Place = rs.getString("Place");
                 String Type = rs.getString("Type");
-                Date RoomDeadline = rs.getDate("RoomDeadline");
+                Date Createtime = rs.getDate("Createtime");
                 int Maxmember = rs.getInt("Maxmember");
                 String GenderRestriction = rs.getString("GenderRestriction");
                 int AgeUpperlimit = rs.getInt("AgeUpperlimit");
@@ -252,8 +255,8 @@ public class RoomHelper {
                 String Description = rs.getString("Description");
                 
                 /** 將每一筆會員資料產生一名新Member物件 */
-                r = new Room(room_id, Name, Date, Place, Type, RoomDeadline, Maxmember, 
-                			 GenderRestriction, AgeUpperlimit, AgeLowerlimit, Creator, Description);
+                r = new Room(room_id, Name, Date, Place, Type, Createtime, Maxmember, 
+                			 GenderRestriction, AgeUpperlimit, AgeLowerlimit, Description);
                 /** 取出該名會員之資料並封裝至 JSONsonArray 內 */
                 jsa.put(r.getData());;
             }
@@ -394,30 +397,34 @@ public class RoomHelper {
         String exexcute_sql = "";
         /** 紀錄程式開始執行時間 */
         long start_time = System.nanoTime();
+        
+        JSONArray opa = new JSONArray();
         /** 紀錄SQL總行數 */
         int row = 0;
+        int id =0 ;
+        
         
         try {
             /** 取得資料庫之連線 */
             conn = DBMgr.getConnection();
             /** SQL指令 */
-            String sql = "INSERT INTO `missa`.`rooms`(`Name`, `Date`, `Place`, `Type`, `RoomDeadline`,"
-            		+ " `Maxmember`, `GenderRestriction`, `AgeUpperlimit`, `AgeLowerlimit`, `Creator`, "
+            String sql = "INSERT INTO `missa`.`rooms`(`Name`, `Date`, `Place`, `Type`, `Createtime`,"
+            		+ " `Maxmember`, `GenderRestriction`, `AgeUpperlimit`, `AgeLowerlimit`, "
             		+ "`Description` )"
-                    + " VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                    + " VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             
             /** 取得所需之參數 */
             String Name = r.getName();
             Date Date = new java.sql.Date(r.getDate().getTime()); 
             String Place = r.getPlace();
             String Type = r.getType();
-            Date RoomDeadline = new java.sql.Date(r.getRoomDeadline().getTime()); 
+            Date Createtime = new java.sql.Date(r.getCreatetime().getTime()); 
             int Maxmember = r.getMaxmember();
             String GenderRestriction = r.getGenderRestriction();
             int AgeUpperlimit = r.getAgeUpperlimit();
             int AgeLowerlimit = r.getAgeLowerlimit();
-            String Creator = r.getCreator();
             String Description = r.getDescription();
+//            ArrayList<Room> RoomList = r.getRoom();
             /**將util的Date轉為sql的date以寫入
             Date Dob = new java.sql.Date(r.getDob().getTime());
             */
@@ -428,15 +435,25 @@ public class RoomHelper {
             pres.setDate(2, Date);
             pres.setString(3, Place);
             pres.setString(4, Type);
-            pres.setDate(5, RoomDeadline);
+            pres.setDate(5, Createtime);
             pres.setInt(6, Maxmember);
             pres.setString(7, GenderRestriction);
             pres.setInt(8, AgeUpperlimit);
             pres.setInt(9, AgeLowerlimit);
-            pres.setString(10, Creator);
-            pres.setString(11, Description);
+            pres.setString(10, Description);
             /** 執行新增之SQL指令並記錄影響之行數 */
             row = pres.executeUpdate();
+          
+            
+//            /*NEW*/ 
+//            ResultSet rs = pres.getGeneratedKeys();
+//            if (rs.next()) {
+//                id = rs.getInt(2);
+//                ArrayList <> opd = Room.getRoom();
+//                opa = jrlh.createByObject(opd);
+//            }
+//            /*NEW*/
+            
             
             /** 紀錄真實執行的SQL指令，並印出 **/
             exexcute_sql = pres.toString();
@@ -490,7 +507,7 @@ public class RoomHelper {
             conn = DBMgr.getConnection();
             /** SQL指令 */
             String sql = "Update `missa`.`rooms` SET `Name` = ?,`Date` = ? ,`Place` = ? , "
-            		    	  + "`Type` = ? , `RoomDeadline` = ? , `Maxmember` = ? , `GenderRestriction` = ? ,"
+            		    	  + "`Type` = ? , `Createtime` = ? , `Maxmember` = ? , `GenderRestriction` = ? ,"
             		          + "`AgeUpperlimit` = ? , `AgeLowerlimit` = ? , `Description` = ? WHERE `Id` = ?";
             /** 最後的WHERE `Id` = ? 就是這塊不太確定QQ
              * 取得所需之參數 */
@@ -498,7 +515,7 @@ public class RoomHelper {
             Date Date = new java.sql.Date(r.getDate().getTime()); 
             String Place = r.getPlace();
             String Type = r.getType();
-            Date RoomDeadline = new java.sql.Date(r.getRoomDeadline().getTime()); 
+            Date Createtime = new java.sql.Date(r.getCreatetime().getTime()); 
             int Maxmember = r.getMaxmember();
             String GenderRestriction = r.getGenderRestriction();
             int AgeUpperlimit = r.getAgeUpperlimit();
@@ -512,7 +529,7 @@ public class RoomHelper {
             pres.setDate(2, Date);
             pres.setString(3, Place);
             pres.setString(4, Type);
-            pres.setDate(5, RoomDeadline);
+            pres.setDate(5, Createtime);
             pres.setInt(6, Maxmember);
             pres.setString(7, GenderRestriction);
             pres.setInt(8, AgeUpperlimit);

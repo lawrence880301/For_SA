@@ -125,17 +125,20 @@
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
-										<label for="member_gender" required="required" data-validation-required-message="Please enter a message.">性別</label><br>
+									<!--<label for="member_gender" required="required" data-validation-required-message="Please enter a message.">性別</label><br>
 										<input type="radio" name="gender" class="form-control" value="man">男<br>
 										<input type="radio" name="gender" class="form-control" value="woman">女<br>
-										<p class="help-block text-danger"></p>
+										<p class="help-block text-danger"></p> -->
+									<input class="form-control" id="member_gender" type="text" placeholder="gender" required="required" data-validation-required-message="Please enter your phone number.">
 									</div>
 								</div>
+								<input type="date" id="member_Dob">
 								<div class="clearfix"></div>
 								<div class="col-lg-12 text-center">
 									<div id="success"></div>
 									<button id="submit" class="sim-btn hvr-rectangle-out" data-text="Send Message" type="submit">Send Message</button>
 								</div>
+								
 					           </form>
 				         </div>
 				    </div>
@@ -305,22 +308,6 @@
                         }
                     }
 
-                    function updateSQLTable(data) {
-                        $("#sql_log > tbody").empty();
-                        var time = (data.time / 1000000).toFixed(2);
-                        var table_html = "";
-
-                        table_html += '<tr>';
-                        table_html += '<td>' + '1' + '</td>';
-                        table_html += '<td>' + data.sql + '</td>';
-                        table_html += '<td style="text-align: right">' + '0' + '</td>';
-                        table_html += '<td style="text-align: right">' + data.row + '</td>';
-                        table_html += '<td style="text-align: right">' + data.row + '</td>';
-                        table_html += '<td style="text-align: right">' + time + '</td>';
-                        table_html += '</tr>';
-                        $("#sql_log > tbody").append(table_html);
-                        $("#sql_summary").html("(default) " + data.row + " queries took " + time + " ms");
-                    }
                 });
             </script>
 

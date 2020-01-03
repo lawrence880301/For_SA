@@ -12,6 +12,8 @@ import javax.servlet.http.*;
 import org.json.*;
 import ncu.im3069.demo.app.Room;
 import ncu.im3069.demo.app.RoomHelper;
+import ncu.im3069.demo.app.JoinedRoomList;
+import ncu.im3069.demo.app.JoinedRoomListHelper;
 import ncu.im3069.tools.JsonReader;
 
 // TODO: Auto-generated Javadoc
@@ -33,6 +35,7 @@ public class RoomController extends HttpServlet {
     
     /** mh，RoomHelper之物件與Member相關之資料庫方法（Sigleton） */
     private RoomHelper rh =  RoomHelper.getHelper();
+    private JoinedRoomListHelper jrlh =  JoinedRoomListHelper.getHelper();
     
     /**
      * 處理Http Method請求POST方法（新增資料）
@@ -42,13 +45,15 @@ public class RoomController extends HttpServlet {
      * @throws ServletException the servlet exception
      * @throws IOException Signals that an I/O exception has occurred.
      */
-    public void doPost(HttpServletRequest request, HttpServletResponse response)
+    public void doPost(HttpServletRequest request, HttpServletResponse response)/*需要多拿Id_member*/
         throws ServletException, IOException {
         /** 透過JsonReader類別將Request之JSON格式資料解析並取回 */
         JsonReader jsr = new JsonReader(request);
         JSONObject jso = jsr.getObject();
         
         /** 取出經解析到JSONObject之Request參數 */
+        int Id_member =jso.getInt("Id_member") ;
+        int Id_room = jso.getInt("Id_room");
         String Name = jso.getString("Name");
         String Place = jso.getString("Place");
         String Type = jso.getString("Type");
@@ -56,14 +61,14 @@ public class RoomController extends HttpServlet {
         String GenderRestriction = jso.getString("GenderRestriction");
         int AgeUpperlimit = jso.getInt("AgeUpperlimit");
         int AgeLowerlimit = jso.getInt("AgeLowerlimit");
-        String Creator = jso.getString("Creator");
-        String Description = jso.getString("description");
+        String Description = jso.getString("description");     
+       
         
         /** Date字串轉成日期的方法*/
         DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm");
         Date Date = null;
         try {
-        	Date = (Date)formatter.parse(jso.getString("RoomDeadline"));
+        	Date = (Date)formatter.parse(jso.getString("Date"));
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -73,9 +78,9 @@ public class RoomController extends HttpServlet {
 		}
         
         /** RoomDeadline 字串轉成日期的方法 */
-        Date RoomDeadline = null;
+        Date Createtime = null;
 		try {
-			RoomDeadline = (Date)formatter.parse(jso.getString("RoomDeadline"));
+			Createtime = (Date)formatter.parse(jso.getString("Createtime"));
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -84,15 +89,27 @@ public class RoomController extends HttpServlet {
 			e.printStackTrace();
 		}
 		
+		Date JoinedDate = null;
+        try {
+        	JoinedDate = (Date)formatter.parse(jso.getString("JoinedDate"));
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
         /** 建立一個新的房間物件 */
-        Room r = new Room(Name, Date, Place, Type, RoomDeadline, Maxmember, GenderRestriction, 
-        				  AgeUpperlimit, AgeLowerlimit, Creator, Description);
+        Room r = new Room(Name, Date, Place, Type, Createtime, Maxmember, GenderRestriction, 
+        				  AgeUpperlimit, AgeLowerlimit, Description);
+        JoinedRoomList jrl = new JoinedRoomList(Id_member,Id_room ,Name ,Date ,Type ,Place,JoinedDate);
         
-        /** 後端檢查是否有欄位為空值，若有則回傳錯誤訊息 
-         * 這邊並沒有檢查所有的欄位，因為Date型態不知道怎麼檢查空值的狀況
-         * 而且檢查空值在前端就應該會做好，後端再檢查一次484顯得有點多餘呢*/
+        /** 後端檢查是否有欄位為空值，若有則回傳錯誤訊息 */
         if(Name.isEmpty() || Place.isEmpty() ||Type.isEmpty() ||Maxmember == 0 
-        		||GenderRestriction.isEmpty() ||AgeUpperlimit == 0 ||Creator.isEmpty()) 
+        		||GenderRestriction.isEmpty() ||AgeUpperlimit == 0) 
         {
             /** 以字串組出JSON格式之資料 */
             String resp = "{\"status\": \'400\', \"message\": \'欄位不能有空值\', \'response\': \'\'}";
@@ -102,13 +119,17 @@ public class RoomController extends HttpServlet {
         /** 透過MemberHelper物件的checkDuplicate()檢查該會員電子郵件信箱是否有重複 */
         else if (!rh.checkDuplicate(r)) {
             /** 透過MemberHelper物件的create()方法新建一個會員至資料庫 */
-            JSONObject data = rh.create(r);
+            JSONObject data = rh.create(r); /*丟進房間資料庫建檔*/
+            JSONArray data2 = jrlh.create(jrl,Id_member);
             
+//            JSONObject JoinedTimeData = jrlh.createByObject(r,id);/*丟進加入房間列表資料庫*/
+            		
             /** 新建一個JSONObject用於將回傳之資料進行封裝 */
             JSONObject resp = new JSONObject();
             resp.put("status", "200");
-            resp.put("message", "成功! 註冊會員資料...");
+            resp.put("message", "成功! 建立房間資料...");
             resp.put("response", data);
+            resp.put("response", data2);/**/
             
             /** 透過JsonReader物件回傳到前端（以JSONObject方式） */
             jsr.response(resp, response);
@@ -211,7 +232,7 @@ public class RoomController extends HttpServlet {
         JSONObject jso = jsr.getObject();
         
         /** 取出經解析到JSONObject之Request參數 */
-        int Id = jso.getInt("id");
+        int Id = jso.getInt("Id");
         String Name = jso.getString("Name");
         String Place = jso.getString("Place");
         String Type = jso.getString("Type");
@@ -219,13 +240,13 @@ public class RoomController extends HttpServlet {
         String GenderRestriction = jso.getString("GenderRestriction");
         int AgeUpperlimit = jso.getInt("AgeUpperlimit");
         int AgeLowerlimit = jso.getInt("AgeLowerlimit");
-        String Description = jso.getString("description");
+        String Description = jso.getString("Description");
 
         /** Date字串轉成日期的方法*/
         DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm");
         Date Date = null;
         try {
-        	Date = (Date)formatter.parse(jso.getString("RoomDeadline"));
+        	Date = (Date)formatter.parse(jso.getString("Date"));
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -234,10 +255,10 @@ public class RoomController extends HttpServlet {
 			e.printStackTrace();
 		}
         
-        /** RoomDeadline 字串轉成日期的方法 */
-        Date RoomDeadline = null;
+        /** Createtime 字串轉成日期的方法 */
+        Date Createtime = null;
 		try {
-			RoomDeadline = (Date)formatter.parse(jso.getString("RoomDeadline"));
+			Createtime = (Date)formatter.parse(jso.getString("Createtime"));
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -248,7 +269,7 @@ public class RoomController extends HttpServlet {
         
 		
         /** 透過傳入之參數，新建一個以這些參數之會員Room物件 */
-        Room r = new Room(Id, Name, Date, Place, Type, RoomDeadline, Maxmember, GenderRestriction, 
+        Room r = new Room(Id, Name, Date, Place, Type, Createtime, Maxmember, GenderRestriction, 
 				  AgeUpperlimit, AgeLowerlimit, Description);
         
         /** 透過Member物件的update()方法至資料庫更新該名會員資料，回傳之資料為JSONObject物件 */

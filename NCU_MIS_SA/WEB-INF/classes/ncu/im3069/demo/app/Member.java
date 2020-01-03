@@ -93,15 +93,13 @@ public class Member {
      * @param status the 會員之組別
      * @param lastName 
      */
-    public Member(int id, String email, String password, String firstName, String lastName, String gender, int login_times, String status, Date Dob) {
+    public Member(int id, String email, String password, String firstName, String lastName, String gender,Date Dob) {
         this.id = id;
         this.email = email;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
-        this.login_times = login_times;
-        this.status = status;
         this.Dob = Dob;
     }
     
