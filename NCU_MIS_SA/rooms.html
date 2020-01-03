@@ -83,6 +83,8 @@
 		.fa fa-quote-left {
 			color:white;
 		} 
+		
+		
 	</style>
 </head>
 
@@ -144,11 +146,12 @@
                             <p class="lead">房間名稱:耶耶<br>運動類型:籃球<br>人數限制:無</p> 
                     	</div>
  						<div class="img-overlay" align=center > 
- 							<div class="inline-button" style="position:absolute; top:100px; left:10px;" >
+ 							<div class="inline-button"  style="position:absolute; top:100px; left:10px;" >
 <!--  							<a class="hoverbutton global-radius" data-toggle="modal" data-target="#exampleModalLong"><i class="fa fa-picture-o"></i></a>  -->
-								
-									<button type="button" class="btn-light hvr-rectangle-out" data-toggle="modal" data-target="#exampleModalLong">詳細資料</button>
-									<button id="s1" value="加入房間" text="加入房間" type="button" class="btn-light hvr-rectangle-out" onclick="changeValue();"></button>
+									<input type="button" class="btn-light hvr-rectangle-out" id="btndetail" data-toggle="modal" data-target="#exampleModalLong" id="s1" value="詳細資料" >
+									<input type="button" class="btn-light hvr-rectangle-out" id="s1" value="加入房間" onclick="test(this.value);">
+<!-- 									<input name="sh1" type="button" id="sh1" value="中 止 發 布 信 息" onclick="chkinfo(this.value);"/> -->
+									</div>
 							
 							</div>
 						</div> 
@@ -173,17 +176,25 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">以下為您所選房間之詳細資料</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        ...
+        	房間名稱:<br>
+        	運動類型:<br>
+        	活動時間:<br>
+        	活動日期:<br>
+        	人數限制:<br>
+        	性別限制:<br>
+        	年齡限制:<br>
+        	
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+      <div class="btn btn-secondary">
+        <button type="button"  data-dismiss="modal">確定</button>
+        <button type="button" >加入房間</button>
       </div>
     </div>
   </div>
@@ -205,14 +216,24 @@
     
 	</script>
   <script>  
- 	
+
+  function test(obj){
+	     if( obj == '加入房間' ){
+	      document.getElementById('s1').value = '已加入';
+	     }
+	     else{
+	      document.getElementById('s1').disabled = true;
+	      alert('您已加入此房間')
+	     }
+	    }
   
-  	function changeValue(){
-  		var btnVal=document.getElementById("s1");
-  		if (btnVal.value=="加入房間"){
-  			btnVal.value=="已加入";
-  		}
-  	}
+//   	function changeValue(){
+  		
+//   		var s1val = document.getElementById("s1");
+//   		if (s1val.value=="加入房間"){
+//   			s1val.value=="已加入";
+//   		}
+//   	}
 	
   	var [client_cart_obj, client_cart_amount]  = getCartDataFromClient();
     
