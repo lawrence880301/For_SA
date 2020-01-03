@@ -83,6 +83,8 @@
 		.fa fa-quote-left {
 			color:white;
 		} 
+		
+		
 	</style>
 </head>
 
@@ -135,39 +137,9 @@
     <p class="lead">以下是所有房間包含其ID、房間名稱、運動類型與其他說明</p>
   </div>
 	
-
-	<div class="gallery-list row"> 
- 				<div class="col-md-4 col-sm-6 gallery-grid gal_a gal_b"> 
- 					<div class="gallery-single fix"> 
- 						<div class="desc"> 
-                            <h3 style="color:#fff;">Room</h3> 
-                            <p class="lead">房間名稱:耶耶<br>運動類型:籃球<br>人數限制:無</p> 
-                    	</div>
- 						<div class="img-overlay" align=center > 
- 							<div class="inline-button" style="position:absolute; top:100px; left:10px;" >
-<!--  							<a class="hoverbutton global-radius" data-toggle="modal" data-target="#exampleModalLong"><i class="fa fa-picture-o"></i></a>  -->
-								
-									<button type="button" class="btn-light hvr-rectangle-out" data-toggle="modal" data-target="#exampleModalLong">詳細資料</button>
-									<button id="s1" value="加入房間" text="加入房間" type="button" class="btn-light hvr-rectangle-out" onclick="changeValue();"></button>
-							
-							</div>
-						</div> 
- 					</div> 
- 				</div> 
-				
- 				<div class="col-md-4 col-sm-6 gallery-grid gal_a gal_b"> 
- 					<div class="gallery-single fix"> 
- 						<img src="uploads/gallery_img-02.jpg" class="img-fluid" alt="Image"> 
- 						<div class="img-overlay"> 
- 							<h3>Office Interior</h3> 
- 							<a href="uploads/gallery_img-02.jpg" data-rel="prettyPhoto[gal]" class="hoverbutton global-radius"><i class="fa fa-picture-o"></i></a> 
- 						</div> 
- 					</div> 
- 				</div> 
-				
-				
- 			</div> 
-
+	<div id="get">
+<!-- 	 <input type="button" id="submit" value="確定"> -->
+	 </div>
 <!-- Modal -->
 <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -205,125 +177,125 @@
     
 	</script>
   <script>  
- 	
-  
-  	function changeValue(){
-  		var btnVal=document.getElementById("s1");
-  		if (btnVal.value=="加入房間"){
-  			btnVal.value=="已加入";
-  		}
-  	}
+ 
 	
-  	var [client_cart_obj, client_cart_amount]  = getCartDataFromClient();
+  $(document).ready(function(){
+     //var $submit= $("#submit");
     
-    function getAllProduct() {
-      $.ajax({
+    //$submit.click(function() {
+ 	  function getAllRoom() {
+    	$.ajax({
         type: "GET",
-        url: "api/rooms.do",
+        url: "api/room.do",
         crossDomain: true,
         cache: false,
         dataType: 'json',
         timeout: 5000,
         success: function (response) {
           if (response.status == 200) {
-        	var product_panel = '';
-        	
+        		alert ("hell ya!!!!!!!!!!!!!!!!!!!!!!")
+        	    var Room_panel = '';
+        		var count = 1;
         	$.each(response.response.data, function (){
-        		product_panel += addProduct(this);
+        		Room_panel += addRoom(this,count);
+        		
+        		count++;
         	})
         	
-        	$("#product_panel").append(product_panel);
-        	setButtonFunction();
-        	checkIfExistInCart();
+        	$("#get").append(Room_panel);
+        	//setButtonFunction();
+        	//checkIfExistInCart();
+        	//var $submit= $("#s"+^[0-9]+$);
+        	$(".auto").on("click",function(){
+    		alert($(this).attr("id"));
+        	var ID=  $(this).attr("id");
+    		$("#"+ID).val("  已加入  ");
+    		$("#"+ID).attr("disabled",true);
+        	})
           }
         },
         error: function () {
-          <!--alert("無法連線到伺服器！");-->
-        }
+          alert("無法連線到伺服器！");  }
       });
+ 	  	}
+ 	  	
+    getAllRoom();
+    
+    
+    function addRoom(data,count) {
+    	
+    	let inner_html = '';
+    	inner_html += '<div class="gallery-list row"> <div class="col-md-4 col-sm-6 gallery-grid gal_a gal_b"> <div class="gallery-single fix"> <div class="desc"> <h3 style="color:#fff;">Room</h3>';
+   		inner_html += '<p class="lead" id="name" >房間名稱:'+data.Name+'<br>運動類型:'+data.Type+'<br>人數限制:'+data.Maxmember +'</p> </div>';
+   		inner_html +='<div class="img-overlay" align=center > <div class="inline-button"  style="position:absolute; top:100px; left:10px;" >';
+   		inner_html   +='<input type="button" class="btn-light hvr-rectangle-out" data-toggle="modal" data-target="#exampleModalLong"  value="詳細資料">'
+		//inner_html += '<button type="button" class="btn-light hvr-rectangle-out" id="s1" onclick="changeValue();">value="加入房間"</button>';
+   		inner_html   +='<input type="button" class="btn-light hvr-rectangle-out auto" id="s'+count+ '" value="加入房間">';
+		inner_html += '	</div></div> </div> </div> </div>';
+ 		//inner_html += '<h4 class="font-weight-normal text-center text-truncate">' + data.Createtime + '</h4>';
+   		return inner_html;
     }
 
-    getAllProduct();
+    });
+//     function setButtonFunction() {
+//     	$('button[name="add_cart"]').click(function () {
+//     		var action = (this.id).split('_')[0];
+//     		var destination = (this.id).split('_')[1];
+//     		var id = (this.id).split('_')[2];
+//     		addRoomToCart(id, 1); 
+//         });
+//     }
+//     //
+//    // function getCartDataFromClient() {
+//     //	let cart = JSON.parse(localStorage.getItem("client_cart_obj"));
+//     //	let amount = JSON.parse(localStorage.getItem("client_cart_amount"));
+//     //	cart = !cart ? new Array() : cart;
+//     //	amount = !amount ? new Array() : amount;
+// 	//	return [cart, amount];
+//     //}
     
-    function addProduct(data) {
-    	let inner_html = '';
-    	inner_html += '<div class="col-md-4">';
-   		inner_html += '<div class="card-header">';
-   		inner_html += '<h4 class="font-weight-normal text-center text-truncate">' + data.name + '</h4>';
- 		inner_html += '</div>';
- 		inner_html += '<div class="card mb-4 shadow-sm">';
- 		inner_html += '<img src="statics/img/product/' + data.image + '" width="100%">';
-		inner_html += '<div class="card-body">';
-		inner_html += '<h1 class="card-title pricing-card-title">$' + data.price + ' <small class="text-muted">/ USD</small></h1>';
-		inner_html += '<p class="card-text">' + data.describe + '</p>';
-		inner_html += '<div class="d-flex justify-content-between align-items-center">';
-		inner_html += '<div class="btn-group">';
-		inner_html += '<button id="add_cart_' + data.id + '" name="add_cart" type="button" class="btn btn-lg btn-block btn-outline-primary">加入購物車</button>';
-		inner_html += '</div><small class="text-muted">id: ' + data.id + '</small>';
-		inner_html += '</div></div></div></div>';
+//     function addProductToCart(id, amount) {
+//     	if (!(client_cart_obj.includes(id))) {
+//     		client_cart_obj.push(id);
+//     		client_cart_amount.push(amount);
+//     		updateCartDataToClent();
+//     	}
     	
-		return inner_html;
-    }
+//     	checkIfExistInCart();
+//     }
     
-    function setButtonFunction() {
-    	$('button[name="add_cart"]').click(function () {
-    		var action = (this.id).split('_')[0];
-    		var destination = (this.id).split('_')[1];
-    		var id = (this.id).split('_')[2];
-    		addProductToCart(id, 1);
-        });
-    }
+//     function updateCartDataToClent() {
+//     	localStorage.setItem("client_cart_obj", JSON.stringify(client_cart_obj));
+//     	localStorage.setItem("client_cart_amount", JSON.stringify(client_cart_amount));
+//     }
     
-    function getCartDataFromClient() {
-    	let cart = JSON.parse(localStorage.getItem("client_cart_obj"));
-    	let amount = JSON.parse(localStorage.getItem("client_cart_amount"));
-    	cart = !cart ? new Array() : cart;
-    	amount = !amount ? new Array() : amount;
-    	return [cart, amount];
-    }
-    
-    function addProductToCart(id, amount) {
-    	if (!(client_cart_obj.includes(id))) {
-    		client_cart_obj.push(id);
-    		client_cart_amount.push(amount);
-    		updateCartDataToClent();
-    	}
-    	
-    	checkIfExistInCart();
-    }
-    
-    function updateCartDataToClent() {
-    	localStorage.setItem("client_cart_obj", JSON.stringify(client_cart_obj));
-    	localStorage.setItem("client_cart_amount", JSON.stringify(client_cart_amount));
-    }
-    
-    function checkIfExistInCart() {
-    	$('button[name="add_cart"]').each(function (){
-    		var action = (this.id).split('_')[0];
-    		var destination = (this.id).split('_')[1];
-    		var id = (this.id).split('_')[2];
-    		if (client_cart_obj.includes(id)) {
-    			setButtonState(this.id, false);
-    		}
-    		else {
-    			setButtonState(this.id, true);
-    		}
+//     function checkIfExistInCart() {
+//     	$('button[name="add_cart"]').each(function (){
+//     		var action = (this.id).split('_')[0];
+//     		var destination = (this.id).split('_')[1];
+//     		var id = (this.id).split('_')[2];
+//     		if (client_cart_obj.includes(id)) {
+//     			setButtonState(this.id, false);
+//     		}
+//     		else {
+//     			setButtonState(this.id, true);
+//     		}
     		
-        });
-    }
+//         });
+//     }
     
-    function setButtonState(id, action) {
-    	if (!action) {
-    	    $('#' + id).prop('disabled', true);
-    	    $('#' + id).addClass('disabled');
-    	    $('#' + id).html('已加入');
-    	}
-    	else {
-    		$('#' + id).prop('disabled', false);
-    	    $('#' + id).removeClass('disabled');
-    	    $('#' + id).html('加入購物車');
-    	}
-    }
+//     function setButtonState(id, action) {
+//     	if (!action) {
+//     	    $('#' + id).prop('disabled', true);
+//     	    $('#' + id).addClass('disabled');
+//     	    $('#' + id).html('已加入');
+//     	}
+//     	else {
+//     		$('#' + id).prop('disabled', false);
+//     	    $('#' + id).removeClass('disabled');
+//     	    $('#' + id).html('加入購物車');
+//     	}
+//    }
     </script>
 
 

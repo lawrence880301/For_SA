@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `missa` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `missa`;
 -- MySQL dump 10.13  Distrib 8.0.17, for Win64 (x86_64)
 --
 -- Host: localhost    Database: missa
@@ -25,16 +23,17 @@ DROP TABLE IF EXISTS `createdroomlist`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `createdroomlist` (
-  `Id` int(11) NOT NULL AUTO_INCREMENT,
-  `Id_member` int(11) NOT NULL,
-  `Id_room` int(11) NOT NULL,
-  `createDate` datetime NOT NULL,
+  `Id` int(10) NOT NULL AUTO_INCREMENT,
+  `Id_member` int(10) NOT NULL,
+  `Id_room` int(10) NOT NULL,
+  `JoinDate` datetime NOT NULL,
   PRIMARY KEY (`Id`),
-  KEY `fk roomid_idx` (`Id_room`),
-  KEY `fk memberid_idx` (`Id_member`),
-  CONSTRAINT `fk memberid` FOREIGN KEY (`Id_member`) REFERENCES `members` (`member_id`),
-  CONSTRAINT `fk roomid` FOREIGN KEY (`Id_room`) REFERENCES `rooms` (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  UNIQUE KEY `Id_UNIQUE` (`Id`),
+  KEY `fk_roomid_idx` (`Id_room`),
+  KEY `fk_memberid_idx` (`Id_member`),
+  CONSTRAINT `fk_memberid` FOREIGN KEY (`Id_member`) REFERENCES `members` (`member_id`),
+  CONSTRAINT `fk_roomid` FOREIGN KEY (`Id_room`) REFERENCES `rooms` (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,6 +42,7 @@ CREATE TABLE `createdroomlist` (
 
 LOCK TABLES `createdroomlist` WRITE;
 /*!40000 ALTER TABLE `createdroomlist` DISABLE KEYS */;
+INSERT INTO `createdroomlist` VALUES (1,1,1,'2019-12-31 00:00:00');
 /*!40000 ALTER TABLE `createdroomlist` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -54,17 +54,20 @@ DROP TABLE IF EXISTS `joinedroomlist`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `joinedroomlist` (
-  `Id` int(10) NOT NULL AUTO_INCREMENT,
-  `Id_member` int(10) NOT NULL,
-  `Id_room` int(10) NOT NULL,
-  `JoinDate` datetime NOT NULL,
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Id_member` int(11) NOT NULL,
+  `Id_room` int(11) NOT NULL,
+  `joinDate` date DEFAULT NULL,
+  `Name` varchar(64) DEFAULT NULL,
+  `Date` date DEFAULT NULL,
+  `Place` varchar(64) DEFAULT NULL,
+  `Type` varchar(64) DEFAULT NULL,
   PRIMARY KEY (`Id`),
-  UNIQUE KEY `Id_UNIQUE` (`Id`),
-  KEY `fk_roomid_idx` (`Id_room`),
-  KEY `fk_memberid_idx` (`Id_member`),
-  CONSTRAINT `fk_memberid` FOREIGN KEY (`Id_member`) REFERENCES `members` (`member_id`),
-  CONSTRAINT `fk_roomid` FOREIGN KEY (`Id_room`) REFERENCES `rooms` (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  KEY `fk roomid_idx` (`Id_room`),
+  KEY `fk memberid_idx` (`Id_member`),
+  CONSTRAINT `fk memberid` FOREIGN KEY (`Id_member`) REFERENCES `members` (`member_id`),
+  CONSTRAINT `fk roomid` FOREIGN KEY (`Id_room`) REFERENCES `rooms` (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -73,6 +76,7 @@ CREATE TABLE `joinedroomlist` (
 
 LOCK TABLES `joinedroomlist` WRITE;
 /*!40000 ALTER TABLE `joinedroomlist` DISABLE KEYS */;
+INSERT INTO `joinedroomlist` VALUES (1,1,1,'2019-12-31','吃屎','2020-01-02','廁所','生理現象');
 /*!40000 ALTER TABLE `joinedroomlist` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -87,11 +91,11 @@ CREATE TABLE `managers` (
   `managers_id` int(10) NOT NULL AUTO_INCREMENT,
   `Name` varchar(30) NOT NULL,
   `Email` varchar(50) NOT NULL,
-  `Password` varchar(50) NOT NULL,
+  `pwd` varchar(64) DEFAULT NULL,
   PRIMARY KEY (`managers_id`),
   UNIQUE KEY `managers_id_UNIQUE` (`managers_id`),
   UNIQUE KEY `Email_UNIQUE` (`Email`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -100,6 +104,7 @@ CREATE TABLE `managers` (
 
 LOCK TABLES `managers` WRITE;
 /*!40000 ALTER TABLE `managers` DISABLE KEYS */;
+INSERT INTO `managers` VALUES (1,'是在哈囉','pupss940204@gmail.com','asd87128'),(2,'在哈囉','pupss940203@gmail.com','asdf87128');
 /*!40000 ALTER TABLE `managers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -121,7 +126,7 @@ CREATE TABLE `members` (
   PRIMARY KEY (`member_id`),
   UNIQUE KEY `member_id_UNIQUE` (`member_id`),
   UNIQUE KEY `email_UNIQUE` (`email`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -130,6 +135,7 @@ CREATE TABLE `members` (
 
 LOCK TABLES `members` WRITE;
 /*!40000 ALTER TABLE `members` DISABLE KEYS */;
+INSERT INTO `members` VALUES (1,'pupss940204@gmail.com','asd87128','戴','敬倫','boy','1234-05-06 00:00:00');
 /*!40000 ALTER TABLE `members` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -142,19 +148,18 @@ DROP TABLE IF EXISTS `rooms`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `rooms` (
   `Id` int(11) NOT NULL AUTO_INCREMENT,
-  `Name` varchar(30) NOT NULL,
-  `Date` datetime NOT NULL,
+  `Name` varchar(64) DEFAULT NULL,
+  `Date` date DEFAULT NULL,
   `Place` varchar(50) NOT NULL,
-  `Type` varchar(30) NOT NULL,
+  `Type` varchar(64) DEFAULT NULL,
   `Maxmember` int(10) NOT NULL,
   `GenderRestriction` varchar(10) NOT NULL,
-  `AgeUpperLimit` int(10) NOT NULL,
-  `AgeDownwardLimit` int(10) NOT NULL,
-  `Creator` varchar(30) NOT NULL,
-  `Description` varchar(100) DEFAULT NULL,
-  `RoomDeadline` datetime NOT NULL,
+  `AgeUpperlimit` int(10) DEFAULT NULL,
+  `AgeLowerlimit` int(10) DEFAULT NULL,
+  `Description` varchar(64) DEFAULT NULL,
+  `createtime` date DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -163,6 +168,7 @@ CREATE TABLE `rooms` (
 
 LOCK TABLES `rooms` WRITE;
 /*!40000 ALTER TABLE `rooms` DISABLE KEYS */;
+INSERT INTO `rooms` VALUES (1,'您好','2020-01-01','資管系專題教室','coding',5,'不限',0,999,'元旦coding到死','2019-12-31'),(2,'shit','2020-01-02','中央大學','大便',4,'不限',10,20,'好吃喔','2020-01-02');
 /*!40000 ALTER TABLE `rooms` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -175,4 +181,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-01-01 10:49:38
+-- Dump completed on 2020-01-03  5:32:34

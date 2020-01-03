@@ -1,6 +1,8 @@
 package ncu.im3069.demo.app;
 
 import org.json.*;
+
+//import java.util.ArrayList;
 /*import java.util.Calendar;*/
 import java.util.Date;
 
@@ -30,7 +32,7 @@ public class Room {
     
     private String Type;
     
-    private Date RoomDeadline;
+    private Date Createtime;
     
     private int Maxmember;
     
@@ -40,9 +42,11 @@ public class Room {
     
     private int AgeLowerlimit;
     
-    private String Creator;
+//  private String Member;
     
     private String Description="";
+    
+//    private static ArrayList<Room> RoomList = new ArrayList<Room>();
     
     
     /** rh，RoomHelper之物件與Room相關之資料庫方法（Sigleton） */
@@ -56,27 +60,26 @@ public class Room {
      * @param Date 活動開始日期
      * @param Place 活動地點
      * @param Type 運動類別
-     * @param RoomDeadline 最後可加入或退出時間
+     * @param Createtime 房間建立時間
      * @param Maxmember 最大可容納會員數量
      * @param GenderRestriction 性別限制
      * @param AgeUpperlimit 年齡上限
      * @param AgeLowerlimit 年齡下限
-     * @param Creator 開房者
      * @param Description 房間敘述 
      */
-    public Room(String Name, Date Date, String Place, String Type, Date RoomDeadline , 
+    public Room(String Name, Date Date, String Place, String Type, Date Createtime , 
     			int Maxmember, String GenderRestriction, int AgeUpperlimit, int AgeLowerlimit, 
-    			String Creator, String Description) {
+    			 String Description) {
         this.Name = Name;
         this.Date = Date;
         this.Place = Place;
         this.Type = Type;
-        this.RoomDeadline = RoomDeadline;
+        this.Createtime = Createtime;
         this.Maxmember = Maxmember;
         this.GenderRestriction = GenderRestriction;
         this.AgeUpperlimit = AgeUpperlimit;
         this.AgeLowerlimit = AgeLowerlimit;
-        this.Creator = Creator;/*開房者的取得方式 目前還沒想到QQ*/
+//        this.Member = Member;/*LocalStorage方法*/
         this.Description = Description;
         update();
     }
@@ -90,7 +93,7 @@ public class Room {
      * @param Date 活動開始日期
      * @param Place 活動地點
      * @param Type 運動類別
-     * @param RoomDeadline 最後可加入或退出時間
+     * @param Createtime 房間建立時間
      * @param Maxmember 最大可容納會員數量
      * @param GenderRestriction 性別限制
      * @param AgeUpperlimit 年齡上限
@@ -98,7 +101,7 @@ public class Room {
      * @param Description 房間敘述
      */
      
-    public Room(int Id, String Name, Date Date, String Place, String Type, Date RoomDeadline, 
+    public Room(int Id, String Name, Date Date, String Place, String Type, Date Createtime, 
 			int Maxmember, String GenderRestriction, int AgeUpperlimit, int AgeLowerlimit, 
 			 String Description) {
     	this.Id = Id;
@@ -106,7 +109,7 @@ public class Room {
         this.Date = Date;
         this.Place = Place;
         this.Type = Type;
-        this.RoomDeadline = RoomDeadline;
+        this.Createtime = Createtime;
         this.Maxmember = Maxmember;
         this.GenderRestriction = GenderRestriction;
         this.AgeUpperlimit = AgeUpperlimit;
@@ -128,7 +131,7 @@ public class Room {
      * @param Date 活動開始日期
      * @param Place 活動地點
      * @param Type 運動類別
-     * @param RoomDeadline 最後可加入或退出時間
+     * @param Createtime 建立房間時間
      * @param Maxmember 最大可容納會員數量
      * @param GenderRestriction 性別限制
      * @param AgeUpperlimit 年齡上限
@@ -136,23 +139,22 @@ public class Room {
      * @param Creator 開房者名稱
      * @param Description 房間敘述
      */
-    public Room(int Id, String Name, Date Date, String Place, String Type, Date RoomDeadline, 
-    			int Maxmember, String GenderRestriction, int AgeUpperlimit, int AgeLowerlimit, 
-    			String Creator, String Description) {
-        this.Id = Id;
-        this.Name = Name;
-        this.Date = Date;
-        this.Place = Place;
-        this.Type = Type;
-        this.RoomDeadline = RoomDeadline;
-        this.Maxmember = Maxmember;
-        this.GenderRestriction = GenderRestriction;
-        this.AgeUpperlimit = AgeUpperlimit;
-        this.AgeLowerlimit = AgeLowerlimit;
-        this.Creator = Creator;
-        this.Description = Description;
-        
-    }
+//    public Room(int Id, String Name, Date Date, String Place, String Type, Date Createtime, 
+//    			int Maxmember, String GenderRestriction, int AgeUpperlimit, int AgeLowerlimit, 
+//    			String Creator, String Description) {
+//        this.Id = Id;
+//        this.Name = Name;
+//        this.Date = Date;
+//        this.Place = Place;
+//        this.Type = Type;
+//        this.Createtime = Createtime;
+//        this.Maxmember = Maxmember;
+//        this.GenderRestriction = GenderRestriction;
+//        this.AgeUpperlimit = AgeUpperlimit;
+//        this.AgeLowerlimit = AgeLowerlimit;
+//     this.Member = Member;/*localstorage*/
+//        this.Description = Description;     
+//    }
     
     /**
      * 取得房間之編號
@@ -162,64 +164,55 @@ public class Room {
     public int getID() {
         return this.Id;
     }
-    
-    /**
-     * 取得會員之姓名
-     *
-     * @return the name 回傳房間姓名
-     */
 	public String getName() {
 		return this.Name;
-	}
-	
+	}	
     public Date getDate() {
         return this.Date;
-    }
-	
+    }	
     public String getPlace() {
         return this.Place;
-    }
-    
+    }   
 	public String getType() {
 		return this.Type;
+	}   
+	public Date getCreatetime() {
+		return this.Createtime;
 	}
-    
-	public Date getRoomDeadline() {
-		return this.RoomDeadline;
-	}
-    /**
-     * 取得更新資料時間之分鐘數
-     *
-     * @return the login times 回傳更新資料時間之分鐘數
-     */
     public int getMaxmember() {
         return this.Maxmember;
-    }
-    
-    /**
-     * 取得會員資料之會員組別
-     *
-     * @return the status 回傳會員組別
-     */
+    } 
     public String getGenderRestriction() {
         return this.GenderRestriction;
-    }
-    
+    }   
     public int getAgeUpperlimit() {
+    	if(Integer.toString(this.AgeUpperlimit)=="")
+    	{
+    		this.AgeUpperlimit=999;
+    	}
         return this.AgeUpperlimit;
-    }
-    
+    }  
     public int getAgeLowerlimit() {
+    	if(Integer.toString(this.AgeLowerlimit)=="")
+    	{
+    		this.AgeLowerlimit=0;
+    	}
         return this.AgeLowerlimit;
-    }
-    
-	public String getCreator() {
-		return this.Creator;
-	}
-	   
+    } 
+//	public String getMember() {
+//		return this.Member;
+//	}
+//	   
 	public String getDescription() {
 		return this.Description;
 	}
+	
+	
+	
+//	public ArrayList<Room> getRoom() {
+//        return this.RoomList;
+//    }
+//	
 	
     /**
      * 更新會員資料
@@ -251,7 +244,7 @@ public class Room {
     }
     
     /**
-     * 取得該名會員所有資料
+     * 取得該房間所有資料
      *
      * @return the data 取得該名會員之所有資料並封裝於JSONObject物件內
      */
@@ -263,12 +256,12 @@ public class Room {
         jso.put("Date", getDate());
         jso.put("Place", getPlace());
         jso.put("Type", getType());
-        jso.put("RoomDeadline", getRoomDeadline());
+        jso.put("Createtime", getCreatetime());
         jso.put("Maxmember", getMaxmember());
         jso.put("GenderRestriction", getGenderRestriction());
         jso.put("AgeUpperlimit",getAgeUpperlimit());
         jso.put("AgeLowerlimit",getAgeLowerlimit());
-        jso.put("Creator", getCreator());
+//      jso.put("Creator", getCreator());
         
         return jso;
     }
