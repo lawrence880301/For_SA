@@ -455,6 +455,7 @@
                                     type: "POST",
                                     url: "api/member.do",
                                     data: data_string,
+                                    async: false,
                                     crossDomain: true,
                                     cache: false,
                                     dataType: 'json',
@@ -492,6 +493,7 @@
                           url: "/NCU_MIS_SA/api/login.do",
                           async: true,
                           data: data_string,
+                          
                           dataType: 'json',
                           success: function (response) {
                             if (response.response.email == Email && response.response.pwd == Pwd) {

@@ -144,6 +144,7 @@
  	<div id="get" class="gallery-list row"> 
 	</div>
 	
+
 	<div id="get2">
 	</div> 
 
@@ -162,7 +163,24 @@
     
 	</script>
   <script>  
- 
+
+  function test(obj){
+	     if( obj == '加入房間' ){
+	      document.getElementById('s1').value = '已加入';
+	     }
+	     else{
+	      document.getElementById('s1').disabled = true;
+	      alert('您已加入此房間')
+	     }
+	    }
+  
+//   	function changeValue(){
+  		
+//   		var s1val = document.getElementById("s1");
+//   		if (s1val.value=="加入房間"){
+//   			s1val.value=="已加入";
+//   		}
+//   	}
 	
   $(document).ready(function(){
 	  
@@ -321,7 +339,7 @@
     	inner_html += ' <div class="col-md-4 col-sm-6 gallery-grid gal_a gal_b"> <div class="gallery-single fix" style="z-index:1;"> <div class="desc"> <h3 style="color:#fff;">Room</h3>';
    		inner_html += '<p class="lead" id="name" >房間名稱:'+data.Name+'<br>運動類型:'+data.Type+'<br>人數限制:'+data.Maxmember +'</p> </div>';
    		inner_html +='<div class="img-overlay" align=center > <div class="inline-button"  style="position:absolute; top:100px; left:10px; " >';
-   		inner_html   +='<input type="button" class="btn-light hvr-rectangle-out Auto" data-toggle="modal" data-target="#exampleModalLong'+count+'" id="'+count+'" value="詳細資料">';
+   		inner_html   +='<input type="button" style="position:absolute; left:150px; top:35px;" class="btn-light hvr-rectangle-out Auto" data-toggle="modal" data-target="#exampleModalLong'+count+'" id="'+count+'" value="詳細資料">';
 		inner_html += '	</div></div> </div> </div> </div>';
    		return inner_html;
     }
