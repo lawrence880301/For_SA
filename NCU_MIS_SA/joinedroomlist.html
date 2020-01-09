@@ -56,6 +56,9 @@
               <a class="nav-link js-scroll-trigger" href="index.html">首頁</a>
             </li>
             <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="manager.html">管理員登入</a>
+          	</li>
+            <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="register.html">註冊/登入</a>
             </li>
             <li class="nav-item">
@@ -70,6 +73,7 @@
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger active" href="joinedroomlist.html">已加入房間</a>
           	</li>
+
           </ul>
         </div>
       </div>
@@ -78,33 +82,90 @@
 		<div class="container-fluid">
 			<div class="section-title text-center">
                 <h3>歡迎回來</h3>
-                <p>您目前已經參加***場活動了</p>
+                	
+                <p id="count"></p>
             </div><!-- end title -->
             
-            <div class="col-md-4 col-sm-6">
-            	<div class="box">
-            		<div class="post-box">
-            			<div class="date">
-							<span>Room </span>
-							<span>1 </span>
-						</div>
-					</div>
-                        <img src="statics/img/roomspic.png">
-                        
-                        <div class="box-content">
-                            <h2 style="color:white;">房間名稱:</h2>
-                            <h2 style="color:white;">運動類別:</h2>
-                            <h2 style="color:white;">活動時間:</h2>
-                            <h2 style="color:white;">活動地點:</h2> 
-                        </div>
-                 </div>
-           	</div>
+        
+            
+<!--             <div class="col-md-4 col-sm-6"> -->
+	            <div id="get2" class="gallery-list row">
+	            	
+           		</div>
+<!--            	</div> -->
                    
             
 			
 			
 		</div>
 	</div>
+	<script src="statics/js/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+<script>
+ 	
+	$(document).ready(function(){
+		
+	//	$("#fuck").click(function(){
+	//		alert(123);			
+		var ID= localStorage.getItem('currentID');
+		function getjoinedroom(){ 
+			//alert(ID);
+			$.ajax({
+	    	type: "GET",
+	        url: "api/joinedroomlist.do",
+	        crossDomain: true,
+	        cache: false,
+	        data: {id:ID},
+	        dataType: 'json',
+	        timeout: 5000,
+	        success: function (response) {
+	          	if (response.status == 200  ) {
+	          		
+	        		alert("您的ID是:"+ID);
+	          		var Room_panel = '';
+	          		 var count=1;
+		        	$.each(response.response.data , function (index,value){		        		
+// 		        		alert(JSON.stringify(value));
+						
+		        		//Room_panel += addJoinedRoom(value);  
+		    
+		        		//checkIfExistInCart();
+			        	$("#get2").append(addJoinedRoom(value,count));
+			    		count++;
+			    	
+		        	})
+		        	   function addcount(count){
+			        	 var inner_html='';
+			        	 var count1=count-1;
+			        	 inner_html+= '<p>您目前已經參加'+count1+'場活動了</p>';
+			        	 $("#count").append(inner_html);
+			        	}
+	          	addcount(count);
+	          	}
+	       },
+	        error: function () {
+	          alert("無法連線到伺服器！");    }
+	      });
+		}
+		getjoinedroom();
+	function addJoinedRoom(response,count){
+		
+		//alert(JSON.stringify(response.response.data[0]));
+		
+		let inner_html ='';	
+		inner_html+='<div class="col-md-4 col-sm-6 gallery-grid gal_a gal_b"><div class="box"><div class="post-box"><div class="date"><span>Room </span><span>'+count+' </span></div></div>';
+		inner_html+='<img src="statics/img/roomspic.png"><div class="box-content">';
+		inner_html+='<h2 style="color:white;">房間名稱:'+JSON.stringify(response.Name)+'</h2>';
+		inner_html+='<h2 style="color:white;">運動類別:'+JSON.stringify(response.Type)+'</h2>';
+		inner_html+='<h2 style="color:white;">活動時間:'+JSON.stringify(response.Date	)+'</h2>';
+		inner_html+='<h2 style="color:white;">活動地點:'+JSON.stringify(response.Place)+'</h2>'; 
+		inner_html+='</div></div>';
+		
+		return inner_html;
+		}
+	
+	});
+
+</script>
 <!--   <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center bg-light"> -->
 <!--     <h1 class="display-4">已參加房間列表</h1> -->
 <!--     <p class="lead">以下是目前您已參加的活動房間</p> -->

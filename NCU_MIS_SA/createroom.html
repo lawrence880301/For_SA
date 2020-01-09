@@ -42,7 +42,7 @@ align: right;
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
       <div class="container-fluid">
         <a class="navbar-brand js-scroll-trigger" href="#page-top">
-			<img class="img-fluid" src="statics/images/logo.png" alt="" />
+			
 		</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           Menu
@@ -53,6 +53,9 @@ align: right;
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="index.html">首頁</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="manager.html">管理員登入</a>
+          	</li>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="register.html">註冊/登入</a>
             </li>
@@ -102,7 +105,7 @@ align: right;
 										<i class="fas fa-basketball-ball"></i>
 										<label for="sporttypeselect">運動類別</label>	
 										<form>
-											<select name="sporttypeselect" placeholder="請選擇運動類別"  required="required" data-validation-required-message="請選擇運動類別.">
+											<select id ="typeselect" name="sporttypeselect" placeholder="請選擇運動類別"  required="required" data-validation-required-message="請選擇運動類別.">
 											　<option value="jog">慢跑</option>
 											　<option value="basketball">籃球</option>
 											　<option value="baseball">棒球</option>
@@ -132,11 +135,11 @@ align: right;
 										<i class="fas fa-user-friends"></i>
 										<label for="peopleselect">活動需求人數</label>
 											<form>
-												<select name="peopleselect" placeholder="請選擇活動最大可容納人數""  required="required" data-validation-required-message="請選擇活動人數.">
-											　	<option value="one">1</option>
-											　	<option value="two">2</option>
-											　	<option value="three">3</option>
-											　	<option value="four">4</option>
+												<select id="maxselect" name="peopleselect" placeholder="請選擇活動最大可容納人數""  required="required" data-validation-required-message="請選擇活動人數.">
+											　	<option value="1">1</option>
+											　	<option value="2">2</option>
+											　	<option value="3">3</option>
+											　	<option value="4">4</option>
 												</select>
 											</form>
 										<p class="help-block text-danger"></p>
@@ -147,7 +150,7 @@ align: right;
 										<i class="fas fa-user-slash"></i>
 										<label for="genderselect">活動性別限制</label>
 											<form>
-												<select name="genderselect" placeholder="請選擇活動性別限制""  required="required" data-validation-required-message="請選擇活動性別限制.">
+												<select id="sexselect" name="genderselect" placeholder="請選擇活動性別限制""  required="required" data-validation-required-message="請選擇活動性別限制.">
 											　	<option value="boy">只限男性</option>
 											　	<option value="girl">只限女性</option>
 											　	<option value="norestriction">性別不限</option>
@@ -164,21 +167,34 @@ align: right;
 												
 											<div class="form-inline">
 												<form >
-													<select name="ageselect" placeholder="請選擇活動年齡限制"  required="required" data-validation-required-message="請選擇活動年齡下限">
-												　		<option value="one">1歲</option>
-												　		<option value="two">2歲</option>
-												　		<option value="three">3歲</option>
-												　		<option value="four">4歲	</option>
-														<option value="nope">不限	</option>
+													<select id="ageselectdown" name="ageselect" placeholder="請選擇活動年齡限制"  required="required" data-validation-required-message="請選擇活動年齡下限">
+												　		<option value="1">10歲</option>
+												　		<option value="2">20歲</option>
+												　		<option value="3">30歲</option>
+												　		<option value="4">40歲</option>
+														<option value="4">50歲</option>										　		
+														<option value="4">60歲</option>
+														<option value="4">70歲</option>
+														<option value="4">80歲</option>
+														<option value="4">90歲</option>
+														<option value="4">100up</option>
+														<option value="不限">不限	</option>
 													</select>
 												</form>
 												<label>to</label>
 												<form >
-													<select name="ageselect" placeholder="請選擇活動年齡限制"  required="required" data-validation-required-message="請選擇活動年齡上限.">
-											　			<option value="one">1歲</option>
-											　			<option value="two">2歲</option>
-											　			<option value="three">3歲</option>
-											　			<option value="nope">不限	</option>
+													<select id="ageselectup" name="ageselect" placeholder="請選擇活動年齡限制"  required="required" data-validation-required-message="請選擇活動年齡上限.">
+										　				<option value="1">10歲</option>
+												　		<option value="2">20歲</option>
+												　		<option value="3">30歲</option>
+												　		<option value="4">40歲</option>
+														<option value="4">50歲</option>				
+														<option value="4">60歲</option>
+														<option value="4">70歲</option>
+														<option value="4">80歲</option>
+														<option value="4">90歲</option>
+														<option value="4">100up</option>
+											　			<option value="不限">不限	</option>
 													</select>
 												</form>
 										
@@ -191,7 +207,7 @@ align: right;
 									<div class="inline-button">
 										
 										<button id="backButton" class="sim-btn hvr-rectangle-out" data-text="Send Message" type="submit">返回</button>
-										<button id="createroomButton" class="sim-btn hvr-rectangle-out" data-text="Send Message" type="submit">建立房間</button>
+										<button id="createroomButton" class="sim-btn hvr-rectangle-out" data-text="Send Message" type="submit" onclick="registerSubmit()">建立房間</button>
 										
 									</div>            
 				
@@ -204,7 +220,64 @@ align: right;
             
         </div><!-- end container -->
     </div><!-- end section -->
+    	<script src="statics/js/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+    
+
+    		var ID= localStorage.getItem('currentID');
+		function registerSubmit() {
+                        var Name = $('#roomname').val();
+                        var Place = $('#location').val();
+                        var Date = $('#time').val();
+                        var Type = $('#typeselect').find('option:selected').text();               
+                        var Maxmember = $('#maxselect').find('option:selected').val();
+                    	var GenderRestriction =$("#sexselect").find('option:selected').text();
+                        var AgeUpperlimit = $('#ageselectdown').find('option:selected').val();
+                        var AgeLowerlimit = $('#ageselectup').find('option:selected').val();
+                        var ID= localStorage.getItem('currentID');
+//                         console.log(Type);
 
 
+
+                            // 將資料組成JSON格式
+                            
+                            var data_object = {
+                                "Name": Name,
+                                "Place": Place,
+                                "Date": Date,
+                                "Type": Type,
+                                "Maxmember": Maxmember,
+                                "GenderRestriction": GenderRestriction,
+                                "AgeUpperlimit": AgeUpperlimit,
+                                "AgeLowerlimit": AgeLowerlimit,
+								"ID":ID,
+                            };
+
+                            // 將JSON格式轉換成字串
+                            var data_string = JSON.stringify(data_object);
+
+                            // 發出POST的AJAX請求
+                            $.ajax({
+                                    type: "POST",
+                                    url: "api/room.do",
+                                    data: data_string,
+                                    crossDomain: true,
+                                    cache: false,
+                                    dataType: 'json',
+                                    timeout: 5000,
+                                    success: function (response) {
+                                        if(response.status == 200){
+                                            alert("Create successfully!!");
+                                        }
+                                    },
+                                    error: function () {
+                                        alert("無法連線到伺服器！");
+                                    }
+                                    
+                            });
+                            
+                        
+                    }
+	</script>
 </body>
 </html>

@@ -130,10 +130,10 @@
 											<div class="form-group" style="font-size:20px;color:#0b001f;">
 												<label for="member_gender" required="required" data-validation-required-message="Please enter a message."></label><br>
 												<label class="radio-inline">
-												    <input type="radio" name="member_gender" value="male" checked>男生   
+												    <input type="radio" name="member_gender" value="男" checked>男生   
 												</label>
 												<label class="radio-inline">
-												    <input type="radio" name="member_gender" value="female" >女生
+												    <input type="radio" name="member_gender" value="女" >女生
 												</label>
 												<p class="help-block text-danger"></p>
 											</div>
@@ -220,6 +220,9 @@
 	            <li class="nav-item">
 	              <a class="nav-link js-scroll-trigger" href="index.html">首頁</a>
 	            </li>
+	            <li class="nav-item">
+              	  <a class="nav-link js-scroll-trigger " href="manager.html">管理員登入</a>
+          		</li>
 	            <li class="nav-item">
 	              <a class="nav-link js-scroll-trigger active" href="register.html">註冊/登入</a>
 	            </li>
@@ -499,7 +502,7 @@
                               localStorage.setItem('currentID', response.response.member_id);
                               alert("successfully logged in");
                             }
-                            alert("error email or password");
+
                           },
                           error: function () {
                             alert("not connect");

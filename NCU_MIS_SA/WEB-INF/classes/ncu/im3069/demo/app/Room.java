@@ -34,13 +34,13 @@ public class Room {
     
     private Date Createtime;
     
-    private int Maxmember;
+    private String Maxmember;
     
     private String GenderRestriction;
     
-    private int AgeUpperlimit;
+    private String AgeUpperlimit;
     
-    private int AgeLowerlimit;
+    private String AgeLowerlimit;
     
 //  private String Member;
     
@@ -67,20 +67,20 @@ public class Room {
      * @param AgeLowerlimit 年齡下限
      * @param Description 房間敘述 
      */
-    public Room(String Name, Date Date, String Place, String Type, Date Createtime , 
-    			int Maxmember, String GenderRestriction, int AgeUpperlimit, int AgeLowerlimit, 
-    			 String Description) {
+    public Room(String Name, Date Date, String Place, String Type, 
+    		String Maxmember, String GenderRestriction, String AgeUpperlimit, String AgeLowerlimit 
+    			 ) {
         this.Name = Name;
         this.Date = Date;
         this.Place = Place;
         this.Type = Type;
-        this.Createtime = Createtime;
+//        this.Createtime = Createtime;
         this.Maxmember = Maxmember;
         this.GenderRestriction = GenderRestriction;
         this.AgeUpperlimit = AgeUpperlimit;
         this.AgeLowerlimit = AgeLowerlimit;
 //        this.Member = Member;/*LocalStorage方法*/
-        this.Description = Description;
+//        this.Description = Description;
         update();
     }
 
@@ -100,21 +100,38 @@ public class Room {
      * @param AgeLowerlimit 年齡下限
      * @param Description 房間敘述
      */
-     
-    public Room(int Id, String Name, Date Date, String Place, String Type, Date Createtime, 
-			int Maxmember, String GenderRestriction, int AgeUpperlimit, int AgeLowerlimit, 
+    public Room(int Id, String Name, Date Date, String Place, String Type, 
+    		String Maxmember, String GenderRestriction, String AgeUpperlimit, String AgeLowerlimit, 
 			 String Description) {
     	this.Id = Id;
         this.Name = Name;
         this.Date = Date;
         this.Place = Place;
         this.Type = Type;
-        this.Createtime = Createtime;
         this.Maxmember = Maxmember;
         this.GenderRestriction = GenderRestriction;
         this.AgeUpperlimit = AgeUpperlimit;
         this.AgeLowerlimit = AgeLowerlimit;
         this.Description = Description;
+        /** 取回原有資料庫內該名會員之更新時間分鐘數與組別 
+        getLoginTimesStatus();
+        /** 計算會員之組別 
+        calcAccName();*/
+    }
+    
+    public Room(int Id, String Name, Date Date, String Place, String Type, 
+    		String Maxmember, String GenderRestriction, String AgeUpperlimit, String AgeLowerlimit
+			 ) {
+    	this.Id = Id;
+        this.Name = Name;
+        this.Date = Date;
+        this.Place = Place;
+        this.Type = Type;
+        this.Maxmember = Maxmember;
+        this.GenderRestriction = GenderRestriction;
+        this.AgeUpperlimit = AgeUpperlimit;
+        this.AgeLowerlimit = AgeLowerlimit;
+
         /** 取回原有資料庫內該名會員之更新時間分鐘數與組別 
         getLoginTimesStatus();
         /** 計算會員之組別 
@@ -156,7 +173,9 @@ public class Room {
 //        this.Description = Description;     
 //    }
     
-    /**
+   
+
+	/**
      * 取得房間之編號
      *
      * @return the Id 回傳房間編號
@@ -179,24 +198,24 @@ public class Room {
 	public Date getCreatetime() {
 		return this.Createtime;
 	}
-    public int getMaxmember() {
+    public String getMaxmember() {
         return this.Maxmember;
     } 
     public String getGenderRestriction() {
         return this.GenderRestriction;
     }   
-    public int getAgeUpperlimit() {
-    	if(Integer.toString(this.AgeUpperlimit)=="")
-    	{
-    		this.AgeUpperlimit=999;
-    	}
+    public String getAgeUpperlimit() {
+//    	if(Integer.toString(this.AgeUpperlimit)=="")
+//    	{
+//    		this.AgeUpperlimit=999;
+//    	}
         return this.AgeUpperlimit;
     }  
-    public int getAgeLowerlimit() {
-    	if(Integer.toString(this.AgeLowerlimit)=="")
-    	{
-    		this.AgeLowerlimit=0;
-    	}
+    public String getAgeLowerlimit() {
+//    	if(Integer.toString(this.AgeLowerlimit)=="")
+//    	{
+//    		this.AgeLowerlimit=0;
+//    	}
         return this.AgeLowerlimit;
     } 
 //	public String getMember() {
